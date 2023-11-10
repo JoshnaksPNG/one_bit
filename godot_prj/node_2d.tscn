@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://8ksprjxfxcb8"]
+[gd_scene load_steps=2 format=3 uid="uid://8ksprjxfxcb8"]
+
+[ext_resource type="Texture2D" uid="uid://cg8cap8gwcc13" path="res://background.png" id="1_po4xb"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_po4xb")
