@@ -1,29 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpd3cwa1xhmk8"]
+[gd_scene load_steps=9 format=3 uid="uid://dpd3cwa1xhmk8"]
 
-[ext_resource type="Texture2D" uid="uid://cn6afcpqoupi7" path="res://character.png" id="1_v1igg"]
+[ext_resource type="Texture2D" uid="uid://bj6afkaxb5coe" path="res://PlayerAnimArt/Idle.png" id="1_xksga"]
+[ext_resource type="Texture2D" uid="uid://cxb6b0rgvgjg6" path="res://PlayerAnimArt/walk1.png" id="2_qyor6"]
+[ext_resource type="Texture2D" uid="uid://dukqv3ipfpg72" path="res://PlayerAnimArt/Jump.png" id="2_w51bt"]
+[ext_resource type="Texture2D" uid="uid://dg27uxhy5f5dr" path="res://PlayerAnimArt/walk2.png" id="3_3ntn1"]
+[ext_resource type="Texture2D" uid="uid://d4im8h8wyt8bc" path="res://PlayerAnimArt/walk3.png" id="4_l2mrx"]
+[ext_resource type="Texture2D" uid="uid://byy70tb1ychcp" path="res://PlayerAnimArt/walk4.png" id="5_fpnqi"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1e3rv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owch2"]
+size = Vector2(43, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qh8ue"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_v1igg")
+"texture": ExtResource("1_xksga")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w51bt")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qyor6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3ntn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l2mrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fpnqi")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_owch2"]
-size = Vector2(43, 90)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
 position = Vector2(-255, 109)
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_1e3rv")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_owch2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.5, 5.72205e-06)
+scale = Vector2(2.38889, 2.5)
+sprite_frames = SubResource("SpriteFrames_qh8ue")
+animation = &"walk"
