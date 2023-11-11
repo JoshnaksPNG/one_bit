@@ -48,7 +48,6 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
-position = Vector2(-255, 109)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 0)
