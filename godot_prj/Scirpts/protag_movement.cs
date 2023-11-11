@@ -5,7 +5,12 @@ using System.Diagnostics;
 public partial class protag_movement : CharacterBody2D
 {
 	public const float Speed = 300.0f;
-	public const float JumpVelocity = -400.0f;
+	public const float JumpVelocity = -900.0f;
+
+
+	// Custom Movement Variables
+	private bool hasDoubleJump = false;
+	private const float doubleJumpRatio = (2f / 3f);
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -22,26 +27,54 @@ public partial class protag_movement : CharacterBody2D
 			velocity.Y += gravity * (float)delta;
 			animatedSprite2D.Play("jump");
 		}
-		else if (velocity != Vector2.Zero)
+		else
 		{
-			animatedSprite2D.Play("walk");
-			if (direction.Angle() == 0)
+			// Add Double Jump Back If Touching Ground
+			if (!hasDoubleJump)
 			{
-				animatedSprite2D.FlipH = false;
+				hasDoubleJump = true;
+				Debug.Write("groudn");
+			}
+
+
+			if (velocity != Vector2.Zero)
+			{
+				animatedSprite2D.Play("walk");
+				if (direction.Angle() == 0)
+				{
+					animatedSprite2D.FlipH = false;
+				}
+				else
+				{
+					animatedSprite2D.FlipH = true;
+				}
 			}
 			else
 			{
-				animatedSprite2D.FlipH = true;
+				animatedSprite2D.Play("default");
 			}
 		}
-		else
+
+
+		// Handle Jump.
+		if (Input.IsActionJustPressed("character_jump"))
 		{
-			animatedSprite2D.Play("default");
+			if (IsOnFloor())
+			{
+                velocity.Y = JumpVelocity;
+            }
+			else if(hasDoubleJump)
+			{
+				hasDoubleJump = false;
+
+				float doubleJumpVelocity = JumpVelocity * doubleJumpRatio;
+
+				Debug.Write(doubleJumpVelocity);
+
+				velocity.Y = doubleJumpVelocity < velocity.Y ? doubleJumpVelocity : velocity.Y;
+			}
 		}
 			
-		// Handle Jump.
-		if (Input.IsActionJustPressed("character_jump") && IsOnFloor())
-			velocity.Y = JumpVelocity;
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
