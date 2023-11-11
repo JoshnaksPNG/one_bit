@@ -33,7 +33,6 @@ public partial class protag_movement : CharacterBody2D
 			if (!hasDoubleJump)
 			{
 				hasDoubleJump = true;
-				Debug.Write("groudn");
 			}
 
 
@@ -68,8 +67,6 @@ public partial class protag_movement : CharacterBody2D
 				hasDoubleJump = false;
 
 				float doubleJumpVelocity = JumpVelocity * doubleJumpRatio;
-
-				Debug.Write(doubleJumpVelocity);
 
 				velocity.Y = doubleJumpVelocity < velocity.Y ? doubleJumpVelocity : velocity.Y;
 			}
