@@ -40,7 +40,7 @@ public partial class protag_movement : CharacterBody2D
 		}
 			
 		// Handle Jump.
-		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
+		if (Input.IsActionJustPressed("character_jump") && IsOnFloor())
 			velocity.Y = JumpVelocity;
 
 		// Get the input direction and handle the movement/deceleration.

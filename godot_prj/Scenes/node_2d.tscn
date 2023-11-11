@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://8ksprjxfxcb8"]
+[gd_scene load_steps=12 format=3 uid="uid://8ksprjxfxcb8"]
 
 [ext_resource type="Texture2D" uid="uid://cg8cap8gwcc13" path="res://Textures/background.png" id="1_ryva4"]
 [ext_resource type="Texture2D" uid="uid://cc8kv1tgrnqj8" path="res://Textures/tileset.png" id="2_4eia6"]
 [ext_resource type="PackedScene" uid="uid://dpd3cwa1xhmk8" path="res://Scenes/protag.tscn" id="3_3j688"]
 [ext_resource type="Script" path="res://Scirpts/protag_movement.cs" id="4_16rww"]
 [ext_resource type="Texture2D" uid="uid://dwicpoygeighl" path="res://Textures/currency_counter.png" id="5_gy2x3"]
+[ext_resource type="Texture2D" uid="uid://h2sp4r22jdsw" path="res://Textures/numbers.png" id="6_j1wn0"]
+[ext_resource type="PackedScene" uid="uid://bqh4ms4etgtn4" path="res://Scenes/inventory.tscn" id="7_1rcwc"]
+[ext_resource type="Script" path="res://Scenes/inventory.cs" id="8_0pc60"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7deue"]
 texture = ExtResource("2_4eia6")
@@ -88,6 +91,10 @@ tile_size = Vector2i(24, 24)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7deue")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeuhl"]
+atlas = ExtResource("6_j1wn0")
+region = Rect2(315, 12, 27, 47)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
@@ -130,3 +137,70 @@ offset_top = 16.0
 offset_right = 1272.0
 offset_bottom = 120.0
 texture = ExtResource("5_gy2x3")
+
+[node name="Digit0" type="TextureRect" parent="CurrencyCounter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 86.0
+offset_top = 16.0
+offset_right = 118.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_yeuhl")
+
+[node name="Digit1" type="TextureRect" parent="CurrencyCounter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 126.0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_yeuhl")
+
+[node name="Digit2" type="TextureRect" parent="CurrencyCounter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 198.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_yeuhl")
+
+[node name="Digit3" type="TextureRect" parent="CurrencyCounter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 206.0
+offset_top = 16.0
+offset_right = 238.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_yeuhl")
+
+[node name="Digit4" type="TextureRect" parent="CurrencyCounter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 246.0
+offset_top = 16.0
+offset_right = 278.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_yeuhl")
+
+[node name="Digit5" type="TextureRect" parent="CurrencyCounter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 286.0
+offset_top = 16.0
+offset_right = 318.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_yeuhl")
+
+[node name="Digit6" type="TextureRect" parent="CurrencyCounter"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 326.0
+offset_top = 16.0
+offset_right = 358.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_yeuhl")
+
+[node name="Inventory" parent="." instance=ExtResource("7_1rcwc")]
+visible = false
+script = ExtResource("8_0pc60")
