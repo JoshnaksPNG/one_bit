@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg8cap8gwcc13"
-path="res://.godot/imported/background.png-98289422cd7d93003950872a7b97021f.ctex"
+uid="uid://dwicpoygeighl"
+path="res://.godot/imported/currency_counter.png-4e2d5121799c83d70033821a85179953.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background.png"
-dest_files=["res://.godot/imported/background.png-98289422cd7d93003950872a7b97021f.ctex"]
+source_file="res://Textures/currency_counter.png"
+dest_files=["res://.godot/imported/currency_counter.png-4e2d5121799c83d70033821a85179953.ctex"]
 
 [params]
 

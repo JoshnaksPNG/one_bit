@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://8ksprjxfxcb8"]
 
-[ext_resource type="Texture2D" uid="uid://cg8cap8gwcc13" path="res://background.png" id="1_po4xb"]
-[ext_resource type="Texture2D" uid="uid://cc8kv1tgrnqj8" path="res://tileset.png" id="2_113mm"]
-[ext_resource type="PackedScene" uid="uid://dpd3cwa1xhmk8" path="res://protag.tscn" id="3_3j688"]
-[ext_resource type="Script" path="res://protag_movement.cs" id="4_censs"]
-[ext_resource type="Texture2D" uid="uid://dwicpoygeighl" path="res://currency_counter.png" id="5_gk0ii"]
+[ext_resource type="Texture2D" uid="uid://cg8cap8gwcc13" path="res://Textures/background.png" id="1_ryva4"]
+[ext_resource type="Texture2D" uid="uid://cc8kv1tgrnqj8" path="res://Textures/tileset.png" id="2_4eia6"]
+[ext_resource type="PackedScene" uid="uid://dpd3cwa1xhmk8" path="res://Scenes/protag.tscn" id="3_3j688"]
+[ext_resource type="Script" path="res://Scirpts/protag_movement.cs" id="4_16rww"]
+[ext_resource type="Texture2D" uid="uid://dwicpoygeighl" path="res://Textures/currency_counter.png" id="5_gy2x3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7deue"]
-texture = ExtResource("2_113mm")
+texture = ExtResource("2_4eia6")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -61,6 +61,27 @@ texture_region_size = Vector2i(24, 24)
 7:1/0 = 0
 7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:1/0/physics_layer_0/angular_velocity = 0.0
+8:0/0 = 0
+8:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:0/0/physics_layer_0/angular_velocity = 0.0
+8:1/0 = 0
+8:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+8:1/0/physics_layer_0/angular_velocity = 0.0
+9:0/0 = 0
+9:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+9:0/0/physics_layer_0/angular_velocity = 0.0
+10:0/0 = 0
+10:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:0/0/physics_layer_0/angular_velocity = 0.0
+10:1/0 = 0
+10:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:1/0/physics_layer_0/angular_velocity = 0.0
+11:1/0 = 0
+11:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:1/0/physics_layer_0/angular_velocity = 0.0
+11:0/0 = 0
+11:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+11:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_sgwa2"]
 tile_size = Vector2i(24, 24)
@@ -78,7 +99,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_po4xb")
+texture = ExtResource("1_ryva4")
 
 [node name="MainTileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -96,11 +117,11 @@ scale = Vector2(2.5, 2.5)
 tile_set = SubResource("TileSet_sgwa2")
 cell_quadrant_size = 24
 format = 2
-layer_0/tile_data = PackedInt32Array(131082, 262145, 1, 196597, 327681, 1, 131061, 131073, 0, 65525, 131073, 0, -11, 131073, 0, -65547, 131073, 0, -131083, 131073, 0, -196619, 131073, 0, -262155, 131073, 0, -327690, 196609, 0, -327689, 196609, 0, -327688, 196609, 0, -327687, 196609, 0, -327686, 196609, 0, -327685, 196609, 0, -327684, 196609, 0, -327683, 196609, 0, -327682, 196609, 0, -327681, 196609, 0, -393216, 196609, 0, -393215, 196609, 0, -393214, 196609, 0, -393213, 196609, 0, -393212, 196609, 0, -393211, 196609, 0, -393210, 196609, 0, -393209, 196609, 0, -393208, 196609, 0, -393207, 196609, 0, -327670, 196609, 1, -262134, 196609, 1, -196598, 196609, 1, -131062, 196609, 1, -65526, 196609, 1, 10, 196609, 1, 65546, 196609, 1, 196600, 393217, 1, 196602, 458753, 0, 65535, 458753, 0, -131066, 458753, 0, -65542, 458753, 0, 65534, 393217, 1, -65543, 393217, 1, -131067, 393217, 1, 196601, 131073, 1, 65543, 131073, 1)
+layer_0/tile_data = PackedInt32Array(131082, 262145, 1, 196597, 327681, 1, 131061, 131073, 0, 65525, 131073, 0, -11, 131073, 0, -65547, 131073, 0, -131083, 131073, 0, -196619, 131073, 0, -262155, 131073, 0, -327690, 196609, 0, -327689, 196609, 0, -327688, 196609, 0, -327687, 196609, 0, -327686, 196609, 0, -327685, 196609, 0, -327684, 196609, 0, -327683, 196609, 0, -327682, 196609, 0, -327681, 196609, 0, -393216, 196609, 0, -393215, 196609, 0, -393214, 196609, 0, -393213, 196609, 0, -393212, 196609, 0, -393211, 196609, 0, -393210, 196609, 0, -393209, 196609, 0, -393208, 196609, 0, -393207, 196609, 0, -327670, 196609, 1, -262134, 196609, 1, -196598, 196609, 1, -131062, 196609, 1, -65526, 196609, 1, 10, 196609, 1, 65546, 196609, 1, 196600, 393217, 1, 196602, 458753, 0, 65535, 458753, 0, -131066, 458753, 0, -65542, 458753, 0, 65534, 393217, 1, -65543, 393217, 1, -131067, 393217, 1, 196601, 524289, 0, 65543, 524289, 1, -327691, 655361, 0, -393206, 720897, 0)
 
 [node name="ProtagBody" parent="." instance=ExtResource("3_3j688")]
 position = Vector2(272, 144)
-script = ExtResource("4_censs")
+script = ExtResource("4_16rww")
 
 [node name="CurrencyCounter" type="TextureRect" parent="."]
 texture_filter = 1
@@ -108,4 +129,4 @@ offset_left = 898.0
 offset_top = 16.0
 offset_right = 1272.0
 offset_bottom = 120.0
-texture = ExtResource("5_gk0ii")
+texture = ExtResource("5_gy2x3")
