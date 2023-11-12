@@ -39,7 +39,7 @@ public partial class protag_movement : CharacterBody2D
 			if (velocity != Vector2.Zero)
 			{
 				animatedSprite2D.Play("walk");
-				if (direction.Angle() == 0)
+				if (direction.X > 0)
 				{
 					animatedSprite2D.FlipH = false;
 				}
