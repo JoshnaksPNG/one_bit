@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxdxvjy488f48"]
+[gd_scene load_steps=10 format=3 uid="uid://dxdxvjy488f48"]
 
 [ext_resource type="Texture2D" uid="uid://cg8cap8gwcc13" path="res://Textures/background.png" id="1_b15yu"]
+[ext_resource type="Script" path="res://Scenes/level_handler.cs" id="1_j1epa"]
 [ext_resource type="Texture2D" uid="uid://cc8kv1tgrnqj8" path="res://Textures/tileset.png" id="2_u7qgh"]
+[ext_resource type="Texture2D" uid="uid://dpajnrvkk6ljo" path="res://Textures/door.png" id="3_ar85w"]
+[ext_resource type="Script" path="res://Scenes/Area2D.cs" id="5_gg3ld"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7deue"]
 texture = ExtResource("2_u7qgh")
@@ -85,7 +88,14 @@ tile_size = Vector2i(24, 24)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7deue")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trgta"]
+size = Vector2(22.4, 44.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwumw"]
+size = Vector2(69, 65)
+
 [node name="Level" type="Node2D"]
+script = ExtResource("1_j1epa")
 
 [node name="Background" type="TextureRect" parent="."]
 texture_filter = 1
@@ -115,3 +125,43 @@ tile_set = SubResource("TileSet_sgwa2")
 cell_quadrant_size = 24
 format = 2
 layer_0/tile_data = PackedInt32Array(131082, 262145, 1, 196597, 327681, 1, 131061, 131073, 0, 65525, 131073, 0, -11, 131073, 0, -65547, 131073, 0, -131083, 131073, 0, -196619, 131073, 0, -262155, 131073, 0, -327690, 196609, 0, -327689, 196609, 0, -327688, 196609, 0, -327687, 196609, 0, -327686, 196609, 0, -327685, 196609, 0, -327684, 196609, 0, -327683, 196609, 0, -327682, 196609, 0, -327681, 196609, 0, -393216, 196609, 0, -393215, 196609, 0, -393214, 196609, 0, -393213, 196609, 0, -393212, 196609, 0, -393211, 196609, 0, -393210, 196609, 0, -393209, 196609, 0, -393208, 196609, 0, -393207, 196609, 0, -327670, 196609, 1, -262134, 196609, 1, -196598, 196609, 1, -131062, 196609, 1, -65526, 196609, 1, 10, 196609, 1, 65546, 196609, 1, 196600, 393217, 1, 196602, 458753, 0, 65535, 458753, 0, -131066, 458753, 0, -65542, 458753, 0, 65534, 393217, 1, -65543, 393217, 1, -131067, 393217, 1, 196601, 524289, 0, 65543, 524289, 1, -327691, 655361, 0, -393206, 720897, 0)
+
+[node name="Doors" type="Node2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2.5, 2.5)
+
+[node name="DoorTextureLeft" type="TextureRect" parent="Doors"]
+texture_filter = 1
+offset_left = -264.0
+offset_top = 72.0
+offset_right = -240.0
+offset_bottom = 120.0
+texture = ExtResource("3_ar85w")
+
+[node name="DoorTextureRight" type="TextureRect" parent="Doors"]
+texture_filter = 1
+offset_left = 240.0
+offset_top = 72.0
+offset_right = 264.0
+offset_bottom = 120.0
+texture = ExtResource("3_ar85w")
+flip_h = true
+
+[node name="DoorCollisions" type="StaticBody2D" parent="Doors"]
+
+[node name="DoorCollisionLeft" type="CollisionShape2D" parent="Doors/DoorCollisions"]
+position = Vector2(-251.4, 96)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_trgta")
+
+[node name="DoorCollisionRight" type="CollisionShape2D" parent="Doors/DoorCollisions"]
+position = Vector2(251.2, 96)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_trgta")
+
+[node name="TempDoorTrigger" type="Area2D" parent="."]
+script = ExtResource("5_gg3ld")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempDoorTrigger"]
+position = Vector2(77.5, 95.5)
+shape = SubResource("RectangleShape2D_uwumw")

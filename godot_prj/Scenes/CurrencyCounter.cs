@@ -12,6 +12,8 @@ public partial class CurrencyCounter : TextureRect
 	TextureRect[] digits;
 	double currencyAmount;
 
+	bool shouldDecrease;
+
 	Dictionary<int, Vector4> digitRegions = new Dictionary<int, Vector4>();
 	
 
@@ -42,6 +44,8 @@ public partial class CurrencyCounter : TextureRect
 
 		currencyAmount = START_CURRENCY;
 		updateCounter((int)currencyAmount);
+
+		shouldDecrease = true;
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,9 +53,13 @@ public partial class CurrencyCounter : TextureRect
 	{
 		// Remove Currency at the rate of LOST_PER_SECOND and update Counter Display
 		// Min Out at 0 
-		double decrement = LOST_PER_SECOND * delta;
-		currencyAmount = currencyAmount > 0 ? currencyAmount - decrement : 0;
-		updateCounter((int)currencyAmount);
+		if (shouldDecrease) 
+		{
+            double decrement = LOST_PER_SECOND * delta;
+            currencyAmount = currencyAmount > 0 ? currencyAmount - decrement : 0;
+            updateCounter((int)currencyAmount);
+        }
+		
 	}
 
 	private void updateCounter(int currency)
