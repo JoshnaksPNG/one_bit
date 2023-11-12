@@ -7,8 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://d4im8h8wyt8bc" path="res://PlayerAnimArt/walk3.png" id="4_l2mrx"]
 [ext_resource type="Texture2D" uid="uid://byy70tb1ychcp" path="res://PlayerAnimArt/walk4.png" id="5_fpnqi"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_owch2"]
-size = Vector2(43, 90)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6764r"]
+radius = 14.5
+height = 96.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qh8ue"]
 animations = [{
@@ -51,7 +52,7 @@ texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.5, 0)
-shape = SubResource("RectangleShape2D_owch2")
+shape = SubResource("CapsuleShape2D_6764r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.5, 5.72205e-06)
