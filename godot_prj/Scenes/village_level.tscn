@@ -180,5 +180,5 @@ shape = SubResource("RectangleShape2D_trgta")
 script = ExtResource("5_bls8g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempDoorTrigger"]
-position = Vector2(77.5, 95.5)
+position = Vector2(608, 616)
 shape = SubResource("RectangleShape2D_uwumw")
