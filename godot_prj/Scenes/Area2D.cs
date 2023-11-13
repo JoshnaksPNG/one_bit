@@ -24,5 +24,6 @@ public partial class Area2D : Godot.Area2D
 			//((level_handler)level.GetScript()).decrementEnemies();
 			lhandler.decrementEnemies();
 		}
-	}
+	} 
+	
 }

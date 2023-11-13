@@ -77,6 +77,10 @@ character_jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_4="LevelTriggerLayer"
+
 [physics]
 
 2d/default_gravity=1980.0

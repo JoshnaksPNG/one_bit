@@ -5,7 +5,7 @@ public partial class level_handler : Node2D
 {
 	const int collision_layer = 1;
 
-	int enemies = 1;
+	public int enemies = 1;
 	Node2D doors;
 	StaticBody2D door_collision;
 
@@ -46,7 +46,7 @@ public partial class level_handler : Node2D
 		}
 	}
 
-	private void displayDoors(bool disp)
+	public void displayDoors(bool disp)
 	{
 		doors.Visible = disp;
 		door_collision.SetCollisionLayerValue(collision_layer, disp);

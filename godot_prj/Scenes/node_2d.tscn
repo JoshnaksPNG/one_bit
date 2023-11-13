@@ -1,29 +1,36 @@
-[gd_scene load_steps=16 format=3 uid="uid://8ksprjxfxcb8"]
+[gd_scene load_steps=24 format=3 uid="uid://8ksprjxfxcb8"]
 
 [ext_resource type="PackedScene" uid="uid://dxdxvjy488f48" path="res://Scenes/basic_level.tscn" id="1_ehfmm"]
+[ext_resource type="PackedScene" uid="uid://cuiky6hysgle5" path="res://Scenes/Beginning.tscn" id="1_k8nr5"]
+[ext_resource type="Script" path="res://Scenes/RuntimeScript.cs" id="1_xd0yr"]
 [ext_resource type="PackedScene" uid="uid://dpd3cwa1xhmk8" path="res://Scenes/protag.tscn" id="3_3j688"]
 [ext_resource type="Script" path="res://Scirpts/protag_movement.cs" id="4_16rww"]
+[ext_resource type="PackedScene" uid="uid://h5ivmhtlwxa" path="res://Scenes/basic_level_2.tscn" id="4_k2cyq"]
+[ext_resource type="PackedScene" uid="uid://dlk7mpwf13uka" path="res://Scenes/empty_level.tscn" id="5_2s6yf"]
 [ext_resource type="Script" path="res://Scenes/CurrencyCounter.cs" id="5_23tvh"]
 [ext_resource type="Texture2D" uid="uid://dwicpoygeighl" path="res://Textures/currency_counter.png" id="5_gy2x3"]
+[ext_resource type="PackedScene" uid="uid://d3bs7doq6mon7" path="res://Scenes/basic_level_3.tscn" id="5_oubg8"]
 [ext_resource type="Texture2D" uid="uid://h2sp4r22jdsw" path="res://Textures/numbers.png" id="6_j1wn0"]
 [ext_resource type="PackedScene" uid="uid://bqh4ms4etgtn4" path="res://Scenes/inventory.tscn" id="7_1rcwc"]
+[ext_resource type="PackedScene" uid="uid://docgx7pejingu" path="res://Scenes/village_level.tscn" id="7_rdjyb"]
 [ext_resource type="Script" path="res://Scenes/inventory.cs" id="8_0pc60"]
+[ext_resource type="Script" path="res://Scenes/LevelManager.cs" id="11_dkcwh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yeuhl"]
 atlas = ExtResource("6_j1wn0")
-region = Rect2(160, 14, 32, 46)
+region = Rect2(345, 12, 41, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4scdn"]
 atlas = ExtResource("6_j1wn0")
-region = Rect2(204, 11, 27, 47)
+region = Rect2(6, 11, 30, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jo7cp"]
 atlas = ExtResource("6_j1wn0")
-region = Rect2(92, 13, 27, 48)
+region = Rect2(44, 12, 34, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1ki7"]
 atlas = ExtResource("6_j1wn0")
-region = Rect2(345, 12, 41, 52)
+region = Rect2(92, 13, 27, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ffqa0"]
 atlas = ExtResource("6_j1wn0")
@@ -31,18 +38,37 @@ region = Rect2(125, 12, 34, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cw34t"]
 atlas = ExtResource("6_j1wn0")
-region = Rect2(269, 10, 38, 51)
+region = Rect2(160, 14, 32, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwtnr"]
 atlas = ExtResource("6_j1wn0")
-region = Rect2(315, 12, 27, 47)
+region = Rect2(204, 11, 27, 47)
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnbrn"]
+size = Vector2(10.5, 112)
 
-[node name="Level" parent="." instance=ExtResource("1_ehfmm")]
+[node name="GameRuntime" type="Node2D"]
+script = ExtResource("1_xd0yr")
+
+[node name="BeginningLevel" parent="." instance=ExtResource("1_k8nr5")]
+
+[node name="BasicLevel" parent="." instance=ExtResource("1_ehfmm")]
+position = Vector2(1420, 0)
+
+[node name="BasicLevel2" parent="." instance=ExtResource("4_k2cyq")]
+position = Vector2(1420, 0)
+
+[node name="BasicLevel3" parent="." instance=ExtResource("5_oubg8")]
+position = Vector2(1420, 0)
+
+[node name="EmptyLevel" parent="." instance=ExtResource("5_2s6yf")]
+position = Vector2(1420, 0)
+
+[node name="VillageLevel" parent="." instance=ExtResource("7_rdjyb")]
+position = Vector2(1420, 0)
 
 [node name="ProtagBody" parent="." instance=ExtResource("3_3j688")]
-position = Vector2(272, 144)
+position = Vector2(64, 608)
 script = ExtResource("4_16rww")
 
 [node name="CurrencyCounter" type="TextureRect" parent="."]
@@ -123,3 +149,14 @@ position = Vector2(-898, -16)
 [node name="Inventory" parent="." instance=ExtResource("7_1rcwc")]
 visible = false
 script = ExtResource("8_0pc60")
+
+[node name="LevelManager" type="Node2D" parent="."]
+script = ExtResource("11_dkcwh")
+
+[node name="NextLevelTrigger" type="Area2D" parent="LevelManager"]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelManager/NextLevelTrigger"]
+position = Vector2(1304, 600)
+shape = SubResource("RectangleShape2D_cnbrn")
+debug_color = Color(0, 0.623529, 0.52549, 0.419608)
