@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://h5ivmhtlwxa" path="res://Scenes/basic_level_2.tscn" id="4_k2cyq"]
 [ext_resource type="PackedScene" uid="uid://dlk7mpwf13uka" path="res://Scenes/empty_level.tscn" id="5_2s6yf"]
 [ext_resource type="Script" path="res://Scenes/CurrencyCounter.cs" id="5_23tvh"]
-[ext_resource type="Texture2D" uid="uid://dwicpoygeighl" path="res://Textures/currency_counter.png" id="5_gy2x3"]
+[ext_resource type="Texture2D" uid="uid://bjt8xdtrnbi8r" path="res://Textures/currency_counter.png" id="5_gy2x3"]
 [ext_resource type="PackedScene" uid="uid://d3bs7doq6mon7" path="res://Scenes/basic_level_3.tscn" id="5_oubg8"]
 [ext_resource type="Texture2D" uid="uid://h2sp4r22jdsw" path="res://Textures/numbers.png" id="6_j1wn0"]
 [ext_resource type="PackedScene" uid="uid://bqh4ms4etgtn4" path="res://Scenes/inventory.tscn" id="7_1rcwc"]

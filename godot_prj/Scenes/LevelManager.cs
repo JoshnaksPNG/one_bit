@@ -34,7 +34,7 @@ public partial class LevelManager : Node2D
 
 	public bool is_changing_level = false;
 
-	bool is_village;
+	public bool is_village;
 
 	double lvl_change_velocity;
 	double lvl_char_velocity;
@@ -120,6 +120,7 @@ public partial class LevelManager : Node2D
 					int level_index = rng.Next(boss_levels.Length);
 					next_level = boss_levels[level_index];
                     ++level_number;
+					is_village = false;
                 }
 				else // If Entering Normal Level
 				{
@@ -132,6 +133,7 @@ public partial class LevelManager : Node2D
                     } while (next_level == current_level);
 					
                     ++level_number;
+                    is_village = false;
                 }
 
 				// Move Next Level To Position Ready To Transition
