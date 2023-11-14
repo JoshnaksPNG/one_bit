@@ -1,11 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpd3cwa1xhmk8"]
+[gd_scene load_steps=16 format=3 uid="uid://dpd3cwa1xhmk8"]
 
 [ext_resource type="Texture2D" uid="uid://bj6afkaxb5coe" path="res://PlayerAnimArt/Idle.png" id="1_xksga"]
 [ext_resource type="Texture2D" uid="uid://cxb6b0rgvgjg6" path="res://PlayerAnimArt/walk1.png" id="2_qyor6"]
 [ext_resource type="Texture2D" uid="uid://dukqv3ipfpg72" path="res://PlayerAnimArt/Jump.png" id="2_w51bt"]
 [ext_resource type="Texture2D" uid="uid://dg27uxhy5f5dr" path="res://PlayerAnimArt/walk2.png" id="3_3ntn1"]
+[ext_resource type="Texture2D" uid="uid://c35468gemn6g3" path="res://PlayerAnimArt/suit_idle.png" id="3_oc3v3"]
+[ext_resource type="Texture2D" uid="uid://dfghbfgedvgwi" path="res://PlayerAnimArt/suit_run_1.png" id="4_hwmkg"]
 [ext_resource type="Texture2D" uid="uid://d4im8h8wyt8bc" path="res://PlayerAnimArt/walk3.png" id="4_l2mrx"]
+[ext_resource type="Texture2D" uid="uid://ctxaw38rm6i14" path="res://PlayerAnimArt/suit_fall.png" id="5_dwxsr"]
 [ext_resource type="Texture2D" uid="uid://byy70tb1ychcp" path="res://PlayerAnimArt/walk4.png" id="5_fpnqi"]
+[ext_resource type="Texture2D" uid="uid://df38lw71ku15e" path="res://PlayerAnimArt/suit_run_2.png" id="5_stmbv"]
+[ext_resource type="Texture2D" uid="uid://djxuxtem6clrt" path="res://PlayerAnimArt/suit_run_3.png" id="6_vg2tb"]
+[ext_resource type="Texture2D" uid="uid://c3216q4wcgf2t" path="res://PlayerAnimArt/suit_run_4.png" id="7_lyoal"]
+[ext_resource type="Texture2D" uid="uid://dg3xb423wgnce" path="res://PlayerAnimArt/suit_run_5.png" id="8_rehb7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6764r"]
 radius = 14.5
@@ -28,6 +35,50 @@ animations = [{
 "loop": true,
 "name": &"jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hwmkg")
+}],
+"loop": true,
+"name": &"suit_dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oc3v3")
+}],
+"loop": true,
+"name": &"suit_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dwxsr")
+}],
+"loop": true,
+"name": &"suit_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hwmkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_stmbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vg2tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lyoal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rehb7")
+}],
+"loop": true,
+"name": &"suit_walk",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -56,7 +107,8 @@ position = Vector2(1.5, 0)
 shape = SubResource("CapsuleShape2D_6764r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1.5, 5.72205e-06)
-scale = Vector2(2.38889, 2.5)
+scale = Vector2(0.52, 0.544)
 sprite_frames = SubResource("SpriteFrames_qh8ue")
-animation = &"walk"
+animation = &"suit_jump"

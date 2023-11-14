@@ -19,6 +19,8 @@ public partial class protag_movement : CharacterBody2D
     int dash_direction = 0;
     bool can_dash = true;
 
+    bool was_flipped_last = true;
+
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -52,7 +54,14 @@ public partial class protag_movement : CharacterBody2D
                 if (!IsOnFloor())
                 {
                     velocity.Y += gravity * (float)delta;
-                    animatedSprite2D.Play("jump");
+                    animatedSprite2D.Play("suit_jump");
+
+                    if (velocity.X != 0)
+                    {
+                        was_flipped_last = velocity.X >= 0;
+                    }
+
+                    animatedSprite2D.FlipH = was_flipped_last;
                 }
                 else
                 {
@@ -62,19 +71,22 @@ public partial class protag_movement : CharacterBody2D
 
                     if (velocity != Vector2.Zero)
                     {
-                        animatedSprite2D.Play("walk");
+                        animatedSprite2D.Play("suit_walk");
                         if (direction.X > 0)
                         {
-                            animatedSprite2D.FlipH = false;
-                        }
-                        else
-                        {
                             animatedSprite2D.FlipH = true;
+                            was_flipped_last = true;
+                        }
+                        else if (direction.X < 0)
+                        {
+                            animatedSprite2D.FlipH = false;
+                            was_flipped_last = false;
                         }
                     }
                     else
                     {
-                        animatedSprite2D.Play("default");
+                        animatedSprite2D.Play("suit_idle");
+                        animatedSprite2D.FlipH = was_flipped_last;
                     }
                 }
 
@@ -141,6 +153,10 @@ public partial class protag_movement : CharacterBody2D
                 }
                 else
                 {
+                    animatedSprite2D.Play("suit_dash");
+                    animatedSprite2D.FlipH = dash_direction > 0;
+                    was_flipped_last = dash_direction > 0;
+
                     velocity.X = DashVelocity * dash_direction;
                     velocity.Y = 0;
 
@@ -153,8 +169,9 @@ public partial class protag_movement : CharacterBody2D
         }
         else // If Level Is Changing
         {
-            animatedSprite2D.Play("walk");
-            animatedSprite2D.FlipH = false;
+            animatedSprite2D.Play("suit_walk");
+            animatedSprite2D.FlipH = true;
+            was_flipped_last = true;
         }
 	}
 }

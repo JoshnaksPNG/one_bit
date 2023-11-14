@@ -8,7 +8,7 @@ public partial class GameOverScreen : TextureRect
 	bool is_game_over = false;
 
 	double screen_opacity = 0;
-	double opacity_rate = 1d;
+	double opacity_rate = 0.75d;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

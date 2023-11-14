@@ -106,8 +106,12 @@ public partial class LevelManager : Node2D
                     current_level = next_level;
                     current_handler = (level_handler)current_level;
 
-                    current_handler.enemies = 1;
-                    current_handler.displayDoors(true);
+                    if (current_level != village)
+                    {
+                        current_handler.enemies = 1;
+                        current_handler.displayDoors(true);
+                    }
+                    
 
                     is_changing_level = false;
                 }
