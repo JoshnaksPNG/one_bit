@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8ksprjxfxcb8"]
+[gd_scene load_steps=35 format=3 uid="uid://8ksprjxfxcb8"]
 
 [ext_resource type="PackedScene" uid="uid://dxdxvjy488f48" path="res://Scenes/basic_level.tscn" id="1_ehfmm"]
 [ext_resource type="PackedScene" uid="uid://cuiky6hysgle5" path="res://Scenes/Beginning.tscn" id="1_k8nr5"]
@@ -15,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://docgx7pejingu" path="res://Scenes/village_level.tscn" id="7_rdjyb"]
 [ext_resource type="Script" path="res://Scenes/inventory.cs" id="8_0pc60"]
 [ext_resource type="Script" path="res://Scenes/LevelManager.cs" id="11_dkcwh"]
+[ext_resource type="Texture2D" uid="uid://c8oeuad752x5b" path="res://Textures/empty_pockets.png" id="16_o6rgh"]
+[ext_resource type="Script" path="res://Scenes/GameOverScreen.cs" id="17_h81te"]
+[ext_resource type="Texture2D" uid="uid://bn3b56ral0rpn" path="res://Textures/score_label.png" id="17_tqxvi"]
+[ext_resource type="Script" path="res://Scenes/EndScore.cs" id="18_5kdm6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yeuhl"]
 atlas = ExtResource("6_j1wn0")
@@ -46,6 +50,34 @@ region = Rect2(204, 11, 27, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnbrn"]
 size = Vector2(10.5, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpwks"]
+atlas = ExtResource("6_j1wn0")
+region = Rect2(345, 12, 41, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oeu4"]
+atlas = ExtResource("6_j1wn0")
+region = Rect2(6, 11, 30, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s18l0"]
+atlas = ExtResource("6_j1wn0")
+region = Rect2(44, 12, 34, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jujk3"]
+atlas = ExtResource("6_j1wn0")
+region = Rect2(92, 13, 27, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gay5h"]
+atlas = ExtResource("6_j1wn0")
+region = Rect2(125, 12, 34, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_410gb"]
+atlas = ExtResource("6_j1wn0")
+region = Rect2(160, 14, 32, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq1ei"]
+atlas = ExtResource("6_j1wn0")
+region = Rect2(204, 11, 27, 47)
 
 [node name="GameRuntime" type="Node2D"]
 script = ExtResource("1_xd0yr")
@@ -160,3 +192,79 @@ collision_layer = 8
 position = Vector2(1304, 600)
 shape = SubResource("RectangleShape2D_cnbrn")
 debug_color = Color(0, 0.623529, 0.52549, 0.419608)
+
+[node name="GameOverScreen" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("16_o6rgh")
+script = ExtResource("17_h81te")
+
+[node name="ScoreLabel" type="TextureRect" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 456.0
+offset_right = 1208.0
+offset_bottom = 582.0
+texture = ExtResource("17_tqxvi")
+
+[node name="LevelScore" type="Node2D" parent="GameOverScreen"]
+position = Vector2(904, 576)
+script = ExtResource("18_5kdm6")
+
+[node name="Digit0" type="TextureRect" parent="GameOverScreen/LevelScore"]
+texture_filter = 1
+offset_left = 86.0
+offset_top = 16.0
+offset_right = 118.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_jpwks")
+
+[node name="Digit1" type="TextureRect" parent="GameOverScreen/LevelScore"]
+texture_filter = 1
+offset_left = 126.0
+offset_top = 16.0
+offset_right = 158.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_4oeu4")
+
+[node name="Digit2" type="TextureRect" parent="GameOverScreen/LevelScore"]
+texture_filter = 1
+offset_left = 166.0
+offset_top = 16.0
+offset_right = 198.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_s18l0")
+
+[node name="Digit3" type="TextureRect" parent="GameOverScreen/LevelScore"]
+texture_filter = 1
+offset_left = 206.0
+offset_top = 16.0
+offset_right = 238.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_jujk3")
+
+[node name="Digit4" type="TextureRect" parent="GameOverScreen/LevelScore"]
+texture_filter = 1
+offset_left = 246.0
+offset_top = 16.0
+offset_right = 278.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_gay5h")
+
+[node name="Digit5" type="TextureRect" parent="GameOverScreen/LevelScore"]
+texture_filter = 1
+offset_left = 286.0
+offset_top = 16.0
+offset_right = 318.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_410gb")
+
+[node name="Digit6" type="TextureRect" parent="GameOverScreen/LevelScore"]
+texture_filter = 1
+offset_left = 326.0
+offset_top = 16.0
+offset_right = 358.0
+offset_bottom = 79.0
+texture = SubResource("AtlasTexture_dq1ei")

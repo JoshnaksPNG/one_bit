@@ -6,11 +6,11 @@ using System.Diagnostics;
 public partial class CurrencyCounter : TextureRect
 {
 	const int MAXLOG10 = 6;
-	const int START_CURRENCY = 1000;
+	const int START_CURRENCY = 100;
 	const double LOST_PER_SECOND = 5;
 
 	TextureRect[] digits;
-	double currencyAmount;
+	public double currencyAmount;
 
 	bool shouldDecrease;
 
