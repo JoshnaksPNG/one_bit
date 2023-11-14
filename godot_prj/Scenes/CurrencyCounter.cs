@@ -57,7 +57,7 @@ public partial class CurrencyCounter : TextureRect
 	{
 		// Remove Currency at the rate of LOST_PER_SECOND and update Counter Display
 		// Min Out at 0 
-		if (shouldDecrease && !levelManager.is_changing_level && !levelManager.is_village) 
+		if (shouldDecrease && !levelManager.is_changing_level && !levelManager.is_village && !levelManager.is_beginning) 
 		{
             double decrement = LOST_PER_SECOND * delta;
             currencyAmount = currencyAmount > 0 ? currencyAmount - decrement : 0;

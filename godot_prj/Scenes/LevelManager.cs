@@ -35,6 +35,7 @@ public partial class LevelManager : Node2D
 	public bool is_changing_level = false;
 
 	public bool is_village;
+    public bool is_beginning = true;
 
 	double lvl_change_velocity;
 	double lvl_char_velocity;
@@ -123,6 +124,11 @@ public partial class LevelManager : Node2D
                 if (is_in_level_trigger)
                 {
                     is_changing_level = true;
+
+                    if(is_beginning) 
+                    {
+                        is_beginning = false;
+                    }
 
                     // If Coming Out Of Boss Level (Entering Village)
                     if (level_number % BOSSOFFSET == 0 && level_number != 0 && !is_village)
