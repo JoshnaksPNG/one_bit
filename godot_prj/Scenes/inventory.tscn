@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqh4ms4etgtn4"]
+[gd_scene load_steps=9 format=3 uid="uid://bqh4ms4etgtn4"]
 
 [ext_resource type="Texture2D" uid="uid://xtgers4g38vj" path="res://Textures/inv.png" id="1_8e4rb"]
 [ext_resource type="Texture2D" uid="uid://cfm2v4cuoo0g3" path="res://Textures/use_0.png" id="2_ocxdm"]
 [ext_resource type="Texture2D" uid="uid://det3nox01b0bm" path="res://Textures/use_1.png" id="3_lwd62"]
-[ext_resource type="Texture2D" uid="uid://i8jp0vv5vvog" path="res://Textures/heirloom_item.png" id="4_wfrcf"]
+[ext_resource type="Script" path="res://Scirpts/UseItemButton.cs" id="4_0g58f"]
+[ext_resource type="FontFile" uid="uid://bx6uvk586sj8d" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="5_cbdi3"]
+[ext_resource type="Texture2D" uid="uid://c0qlgh8mkulsh" path="res://Textures/empty_item_slot.png" id="5_xp0vr"]
+[ext_resource type="Script" path="res://Scirpts/ItemSelector.cs" id="6_cuwrk"]
+[ext_resource type="Texture2D" uid="uid://cve8shh3u5fjv" path="res://Textures/item_hover.png" id="6_yb5b8"]
 
 [node name="Inventory" type="TextureRect"]
 texture_filter = 1
@@ -22,6 +26,7 @@ offset_right = 867.0
 offset_bottom = 550.0
 texture_normal = ExtResource("2_ocxdm")
 texture_hover = ExtResource("3_lwd62")
+script = ExtResource("4_0g58f")
 
 [node name="Item0" type="TextureRect" parent="."]
 texture_filter = 1
@@ -30,4 +35,105 @@ offset_left = 104.0
 offset_top = 88.0
 offset_right = 274.0
 offset_bottom = 228.0
-texture = ExtResource("4_wfrcf")
+texture = ExtResource("5_xp0vr")
+
+[node name="ItemSelector0" type="TextureButton" parent="Item0"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 136.0
+texture_hover = ExtResource("6_yb5b8")
+script = ExtResource("6_cuwrk")
+
+[node name="Item1" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 288.0
+offset_top = 96.0
+offset_right = 458.0
+offset_bottom = 236.0
+texture = ExtResource("5_xp0vr")
+
+[node name="ItemSelector1" type="TextureButton" parent="Item1"]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 136.0
+texture_hover = ExtResource("6_yb5b8")
+script = ExtResource("6_cuwrk")
+
+[node name="Item2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 104.0
+offset_top = 248.0
+offset_right = 274.0
+offset_bottom = 388.0
+texture = ExtResource("5_xp0vr")
+
+[node name="ItemSelector2" type="TextureButton" parent="Item2"]
+layout_mode = 0
+offset_top = -8.0
+offset_right = 168.0
+offset_bottom = 136.0
+texture_hover = ExtResource("6_yb5b8")
+script = ExtResource("6_cuwrk")
+
+[node name="Item3" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 288.0
+offset_top = 248.0
+offset_right = 458.0
+offset_bottom = 388.0
+texture = ExtResource("5_xp0vr")
+
+[node name="ItemSelector3" type="TextureButton" parent="Item3"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 144.0
+texture_hover = ExtResource("6_yb5b8")
+script = ExtResource("6_cuwrk")
+
+[node name="Item4" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 104.0
+offset_top = 400.0
+offset_right = 274.0
+offset_bottom = 540.0
+texture = ExtResource("5_xp0vr")
+
+[node name="ItemSelector4" type="TextureButton" parent="Item4"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 144.0
+texture_hover = ExtResource("6_yb5b8")
+script = ExtResource("6_cuwrk")
+
+[node name="Item5" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 296.0
+offset_top = 408.0
+offset_right = 466.0
+offset_bottom = 548.0
+texture = ExtResource("5_xp0vr")
+
+[node name="ItemSelector5" type="TextureButton" parent="Item5"]
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 136.0
+texture_hover = ExtResource("6_yb5b8")
+script = ExtResource("6_cuwrk")
+
+[node name="ItemDescription" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 528.0
+offset_top = 112.0
+offset_right = 1000.0
+offset_bottom = 456.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("5_cbdi3")
+theme_override_font_sizes/normal_font_size = 18
+text = "Try Out This New Font
+"

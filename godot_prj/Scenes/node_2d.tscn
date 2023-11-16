@@ -1,24 +1,25 @@
-[gd_scene load_steps=35 format=3 uid="uid://8ksprjxfxcb8"]
+[gd_scene load_steps=36 format=3 uid="uid://dk8ck7pgwd6u6"]
 
 [ext_resource type="PackedScene" uid="uid://dxdxvjy488f48" path="res://Scenes/basic_level.tscn" id="1_ehfmm"]
 [ext_resource type="PackedScene" uid="uid://cuiky6hysgle5" path="res://Scenes/Beginning.tscn" id="1_k8nr5"]
-[ext_resource type="Script" path="res://Scenes/RuntimeScript.cs" id="1_xd0yr"]
+[ext_resource type="Script" path="res://Scirpts/RuntimeScript.cs" id="1_v2a0t"]
 [ext_resource type="PackedScene" uid="uid://dpd3cwa1xhmk8" path="res://Scenes/protag.tscn" id="3_3j688"]
 [ext_resource type="Script" path="res://Scirpts/protag_movement.cs" id="4_16rww"]
 [ext_resource type="PackedScene" uid="uid://h5ivmhtlwxa" path="res://Scenes/basic_level_2.tscn" id="4_k2cyq"]
 [ext_resource type="PackedScene" uid="uid://dlk7mpwf13uka" path="res://Scenes/empty_level.tscn" id="5_2s6yf"]
-[ext_resource type="Script" path="res://Scenes/CurrencyCounter.cs" id="5_23tvh"]
 [ext_resource type="Texture2D" uid="uid://bjt8xdtrnbi8r" path="res://Textures/currency_counter.png" id="5_gy2x3"]
 [ext_resource type="PackedScene" uid="uid://d3bs7doq6mon7" path="res://Scenes/basic_level_3.tscn" id="5_oubg8"]
 [ext_resource type="Texture2D" uid="uid://h2sp4r22jdsw" path="res://Textures/numbers.png" id="6_j1wn0"]
 [ext_resource type="PackedScene" uid="uid://bqh4ms4etgtn4" path="res://Scenes/inventory.tscn" id="7_1rcwc"]
 [ext_resource type="PackedScene" uid="uid://docgx7pejingu" path="res://Scenes/village_level.tscn" id="7_rdjyb"]
-[ext_resource type="Script" path="res://Scenes/inventory.cs" id="8_0pc60"]
-[ext_resource type="Script" path="res://Scenes/LevelManager.cs" id="11_dkcwh"]
+[ext_resource type="Script" path="res://Scirpts/CurrencyCounter.cs" id="11_bxdun"]
+[ext_resource type="Script" path="res://Scirpts/Inventory.cs" id="14_ky7nc"]
+[ext_resource type="Script" path="res://Scirpts/LevelManager.cs" id="15_g7afq"]
 [ext_resource type="Texture2D" uid="uid://c8oeuad752x5b" path="res://Textures/empty_pockets.png" id="16_o6rgh"]
-[ext_resource type="Script" path="res://Scenes/GameOverScreen.cs" id="17_h81te"]
 [ext_resource type="Texture2D" uid="uid://bn3b56ral0rpn" path="res://Textures/score_label.png" id="17_tqxvi"]
-[ext_resource type="Script" path="res://Scenes/EndScore.cs" id="18_5kdm6"]
+[ext_resource type="Script" path="res://Scirpts/GameOverScreen.cs" id="17_uoo2m"]
+[ext_resource type="Script" path="res://Scirpts/EndScore.cs" id="19_48gvf"]
+[ext_resource type="Script" path="res://Scirpts/AudioPlayer.cs" id="20_vsuvr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yeuhl"]
 atlas = ExtResource("6_j1wn0")
@@ -80,7 +81,7 @@ atlas = ExtResource("6_j1wn0")
 region = Rect2(204, 11, 27, 47)
 
 [node name="GameRuntime" type="Node2D"]
-script = ExtResource("1_xd0yr")
+script = ExtResource("1_v2a0t")
 
 [node name="BeginningLevel" parent="." instance=ExtResource("1_k8nr5")]
 
@@ -110,7 +111,7 @@ offset_top = 16.0
 offset_right = 1272.0
 offset_bottom = 120.0
 texture = ExtResource("5_gy2x3")
-script = ExtResource("5_23tvh")
+script = ExtResource("11_bxdun")
 
 [node name="Digit0" type="TextureRect" parent="CurrencyCounter"]
 texture_filter = 1
@@ -180,10 +181,10 @@ position = Vector2(-898, -16)
 
 [node name="Inventory" parent="." instance=ExtResource("7_1rcwc")]
 visible = false
-script = ExtResource("8_0pc60")
+script = ExtResource("14_ky7nc")
 
 [node name="LevelManager" type="Node2D" parent="."]
-script = ExtResource("11_dkcwh")
+script = ExtResource("15_g7afq")
 
 [node name="NextLevelTrigger" type="Area2D" parent="LevelManager"]
 collision_layer = 8
@@ -199,7 +200,7 @@ texture_filter = 1
 offset_right = 1280.0
 offset_bottom = 720.0
 texture = ExtResource("16_o6rgh")
-script = ExtResource("17_h81te")
+script = ExtResource("17_uoo2m")
 
 [node name="ScoreLabel" type="TextureRect" parent="GameOverScreen"]
 layout_mode = 0
@@ -211,7 +212,7 @@ texture = ExtResource("17_tqxvi")
 
 [node name="LevelScore" type="Node2D" parent="GameOverScreen"]
 position = Vector2(904, 576)
-script = ExtResource("18_5kdm6")
+script = ExtResource("19_48gvf")
 
 [node name="Digit0" type="TextureRect" parent="GameOverScreen/LevelScore"]
 texture_filter = 1
@@ -268,3 +269,8 @@ offset_top = 16.0
 offset_right = 358.0
 offset_bottom = 79.0
 texture = SubResource("AtlasTexture_dq1ei")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(640, 384)
+volume_db = 10.0
+script = ExtResource("20_vsuvr")

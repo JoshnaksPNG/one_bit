@@ -46,6 +46,8 @@ public partial class LevelManager : Node2D
 
     GameOverScreen game_over;
 
+    AudioPlayer audioPlayer;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -79,6 +81,8 @@ public partial class LevelManager : Node2D
         currency_counter = GetNode<CurrencyCounter>("../CurrencyCounter");
 
         game_over = GetNode<GameOverScreen>("../GameOverScreen");
+
+        audioPlayer = GetNode<AudioPlayer>("../AudioPlayer");
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -135,6 +139,8 @@ public partial class LevelManager : Node2D
                     {
                         next_level = village;
                         is_village = true;
+                        audioPlayer.setMusic("village");
+                        audioPlayer.setPlay(true);
                     }
                     else if (level_number % BOSSOFFSET == BOSSOFFSET - 1) // If Entering Boss Level
                     {
@@ -143,6 +149,8 @@ public partial class LevelManager : Node2D
                         next_level = boss_levels[level_index];
                         ++level_number;
                         is_village = false;
+                        audioPlayer.setMusic("boss");
+                        audioPlayer.setPlay(true);
                     }
                     else // If Entering Normal Level
                     {

@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 public partial class protag_movement : CharacterBody2D
@@ -7,6 +9,9 @@ public partial class protag_movement : CharacterBody2D
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -900.0f;
     public const float DashVelocity = 900f;
+
+    public const float Damage = 30f;
+    public const float AttackSpeed = 0.2f;
 
 
 	// Custom Movement Variables
@@ -21,6 +26,21 @@ public partial class protag_movement : CharacterBody2D
 
     bool was_flipped_last = true;
 
+    // Modifiers
+    public List<PlayerStatModifier> modifierList;
+
+    float realSpeed = Speed;
+    float realJumpVelocity = JumpVelocity;
+    float realDashVelocity = DashVelocity;
+    float realDJumpRatio = doubleJumpRatio;
+    double realDashDuration = DASH_DURATION;
+    float realDamage = Damage;
+    float realAttackSpeed = AttackSpeed;
+
+
+    CurrencyCounter currencyCounter;
+
+
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -32,7 +52,9 @@ public partial class protag_movement : CharacterBody2D
     {
         lvl_manager = GetNode<LevelManager>("../LevelManager");
 
+        currencyCounter = GetNode<CurrencyCounter>("../CurrencyCounter");
 
+        modifierList = new List<PlayerStatModifier>();
 
         // base._Ready();
     }
@@ -96,13 +118,13 @@ public partial class protag_movement : CharacterBody2D
                 {
                     if (IsOnFloor())
                     {
-                        velocity.Y = JumpVelocity;
+                        velocity.Y = realJumpVelocity;
                     }
                     else if (hasDoubleJump)
                     {
                         hasDoubleJump = false;
 
-                        float doubleJumpVelocity = JumpVelocity * doubleJumpRatio;
+                        float doubleJumpVelocity = realJumpVelocity * realDJumpRatio;
 
                         velocity.Y = doubleJumpVelocity < velocity.Y ? doubleJumpVelocity : velocity.Y;
                     }
@@ -113,11 +135,11 @@ public partial class protag_movement : CharacterBody2D
                 // As good practice, you should replace UI actions with custom gameplay actions.
                 if (direction != Vector2.Zero)
                 {
-                    velocity.X = direction.X * Speed;
+                    velocity.X = direction.X * realSpeed;
                 }
                 else
                 {
-                    velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+                    velocity.X = Mathf.MoveToward(Velocity.X, 0, realSpeed);
                 }
 
                 // Handle Dashing
@@ -140,7 +162,7 @@ public partial class protag_movement : CharacterBody2D
                     else
                     {
                         dash_direction = 0;
-                        dash_timer = DASH_DURATION;
+                        dash_timer = realDashDuration;
                     }
                 }
                 
@@ -157,7 +179,7 @@ public partial class protag_movement : CharacterBody2D
                     animatedSprite2D.FlipH = dash_direction > 0;
                     was_flipped_last = dash_direction > 0;
 
-                    velocity.X = DashVelocity * dash_direction;
+                    velocity.X = realDashVelocity * dash_direction;
                     velocity.Y = 0;
 
                     dash_timer -= delta;
@@ -166,6 +188,7 @@ public partial class protag_movement : CharacterBody2D
 
             Velocity = velocity;
             MoveAndSlide();
+            ModifyRealStats(delta);
         }
         else // If Level Is Changing
         {
@@ -174,4 +197,80 @@ public partial class protag_movement : CharacterBody2D
             was_flipped_last = true;
         }
 	}
+
+    private void ModifyRealStats(double delta)
+    {
+
+        realSpeed = Speed;
+        realJumpVelocity = JumpVelocity;
+        realDamage = Damage;
+        realAttackSpeed = AttackSpeed;
+        realDashDuration = DASH_DURATION;
+        realDashVelocity = DashVelocity;
+        realDJumpRatio = doubleJumpRatio;
+
+        for(int i = 0; i < modifierList.Count; i++) 
+        {
+            PlayerStatModifier current_modifier = modifierList[i];
+
+            if (current_modifier.duration <= 0)
+            {
+                modifierList.RemoveAt(i);
+                i--;
+            }
+            else 
+            {
+                switch (current_modifier.modifiedStat)
+                {
+                    case PlayerStatModifier.ModifiedStat.JumpVelocity:
+                        {
+                            realJumpVelocity += current_modifier.value;
+                            break;
+                        }
+                    case PlayerStatModifier.ModifiedStat.DashVelocity:
+                        {
+                            realDashVelocity += current_modifier.value;
+                            break;
+                        }
+                    case PlayerStatModifier.ModifiedStat.DoubleJumpRatio:
+                        {
+                            realDJumpRatio += current_modifier.value;
+                            break;
+                        }
+                    case PlayerStatModifier.ModifiedStat.DashDuration:
+                        {
+                            realDashDuration += current_modifier.value;
+                            break;
+                        }
+                    case PlayerStatModifier.ModifiedStat.Damage:
+                        {
+                            realDamage += current_modifier.value;
+                            break;
+                        }
+                    case PlayerStatModifier.ModifiedStat.AttackSpeed:
+                        {
+                            realAttackSpeed += current_modifier.value;
+                            break;
+                        }
+                    case PlayerStatModifier.ModifiedStat.Speed:
+                        {
+                            realSpeed += current_modifier.value;
+                            break;
+                        }
+                    case PlayerStatModifier.ModifiedStat.Currency:
+                        {
+                            currencyCounter.addCurrency(current_modifier.value);
+                            current_modifier.duration = 0;
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+
+                current_modifier.duration -= delta;
+            }
+        }
+    }
 }

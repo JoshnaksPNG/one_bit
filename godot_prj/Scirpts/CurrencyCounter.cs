@@ -100,5 +100,6 @@ public partial class CurrencyCounter : TextureRect
 	public void addCurrency(double currency)
 	{
 		currencyAmount += currency;
+		updateCounter((int)currencyAmount);
 	}
 }
