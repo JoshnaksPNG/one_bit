@@ -181,3 +181,19 @@ script = ExtResource("5_1lhj6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempDoorTrigger"]
 position = Vector2(77.5, 95.5)
 shape = SubResource("RectangleShape2D_uwumw")
+
+[node name="EnemySpawners" type="Node2D" parent="."]
+
+[node name="Spawner0" type="Node2D" parent="EnemySpawners"]
+position = Vector2(264, 424)
+
+[node name="Spawner1" type="Node2D" parent="EnemySpawners"]
+position = Vector2(1000, 200)
+
+[node name="Spawner2" type="Node2D" parent="EnemySpawners"]
+position = Vector2(272, 192)
+
+[node name="Spawner3" type="Node2D" parent="EnemySpawners"]
+position = Vector2(704, 600)
+
+[node name="Enemies" type="Node2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dk8ck7pgwd6u6"]
+[gd_scene load_steps=39 format=3 uid="uid://dk8ck7pgwd6u6"]
 
 [ext_resource type="PackedScene" uid="uid://dxdxvjy488f48" path="res://Scenes/basic_level.tscn" id="1_ehfmm"]
 [ext_resource type="PackedScene" uid="uid://cuiky6hysgle5" path="res://Scenes/Beginning.tscn" id="1_k8nr5"]
@@ -21,8 +21,7 @@
 [ext_resource type="Script" path="res://Scirpts/GameOverScreen.cs" id="17_uoo2m"]
 [ext_resource type="Script" path="res://Scirpts/EndScore.cs" id="19_48gvf"]
 [ext_resource type="Script" path="res://Scirpts/AudioPlayer.cs" id="20_vsuvr"]
-[ext_resource type="PackedScene" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
-[ext_resource type="PackedScene" uid="uid://d1iiuyfdtxq2r" path="res://Scenes/enemy.tscn" id="22_wlsfu"]
+[ext_resource type="PackedScene" uid="uid://bb6atwpfbyyx" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7gq3"]
 radius = 14.0
@@ -197,6 +196,9 @@ position = Vector2(-898, -16)
 visible = false
 script = ExtResource("14_ky7nc")
 
+[node name="ItemSelection" parent="." instance=ExtResource("21_dqs2n")]
+texture_filter = 1
+
 [node name="LevelManager" type="Node2D" parent="."]
 script = ExtResource("15_g7afq")
 
@@ -288,11 +290,5 @@ texture = SubResource("AtlasTexture_dq1ei")
 position = Vector2(640, 384)
 volume_db = 10.0
 script = ExtResource("20_vsuvr")
-
-[node name="ItemSelection" parent="." instance=ExtResource("21_dqs2n")]
-texture_filter = 1
-
-[node name="Enemy" parent="." instance=ExtResource("22_wlsfu")]
-position = Vector2(590, 570)
 
 [connection signal="area_entered" from="ProtagBody/EnemyCollider" to="ProtagBody/EnemyCollider" method="OnAreaEntered"]

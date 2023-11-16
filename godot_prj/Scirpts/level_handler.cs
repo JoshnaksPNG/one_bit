@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 public partial class level_handler : Node2D
 {
@@ -9,13 +11,27 @@ public partial class level_handler : Node2D
 	Node2D doors;
 	StaticBody2D door_collision;
 
+	Node2D spawner_parent;
 
+	List<Node2D> spawners = new List<Node2D>();
+
+	Node2D enemy_tree;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		doors = GetNode<Node2D>("Doors");
 		door_collision = GetNode<StaticBody2D>("Doors/DoorCollisions");
+
+		spawner_parent = GetNode<Node2D>("./EnemySpawners");
+
+		enemy_tree = GetNode<Node2D>("./Enemies");
+
+		int child_count = spawner_parent.GetChildCount();
+        for (int i = 0; i < child_count; i++)
+		{
+			spawners.Add(spawner_parent.GetChild<Node2D>(i));
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,5 +66,19 @@ public partial class level_handler : Node2D
 	{
 		doors.Visible = disp;
 		door_collision.SetCollisionLayerValue(collision_layer, disp);
+	}
+
+	public void instansiate_enemies()
+	{
+		int spawner_count = spawners.Count;
+		for (int i = 0; i < spawner_count; i++) 
+		{
+			RigidBody2D enemyBeingSpawned = EnemyCatalogue.all_enemies["gripper"].Instantiate<RigidBody2D>();
+
+			enemyBeingSpawned.Position = spawners[i].Position;
+			enemy_tree.AddChild(enemyBeingSpawned);
+		}
+
+		setEnemies(spawner_count);
 	}
 }

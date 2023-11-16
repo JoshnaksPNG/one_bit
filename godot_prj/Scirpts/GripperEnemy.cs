@@ -16,10 +16,10 @@ public partial class GripperEnemy : RigidBody2D
 	}
 	public override void _IntegrateForces(PhysicsDirectBodyState2D state)
 	{
-		// Vector2 mov = new Vector2();
-		// mov.X = Mathf.MoveToward(Position.X, target_pos.X, speed.X);
-		// mov.Y = Mathf.MoveToward(Position.Y, target_pos.Y, speed.Y);
-		// state.AddConstantForce(mov);
-		// target_pos = player.Position;
+		 //Vector2 mov = new Vector2();
+		 //mov.X = Mathf.MoveToward(Position.X, target_pos.X, speed.X);
+		 //mov.Y = Mathf.MoveToward(Position.Y, target_pos.Y, speed.Y);
+		 //state.AddConstantForce(mov);
+		 //target_pos = player.Position;
 	}
 }

@@ -113,7 +113,8 @@ public partial class LevelManager : Node2D
 
                     if (current_level != village)
                     {
-                        current_handler.enemies = 1;
+                        //current_handler.enemies = 1;
+                        current_handler.instansiate_enemies();
                         current_handler.displayDoors(true);
                     }
                     
@@ -123,7 +124,7 @@ public partial class LevelManager : Node2D
             }
             else
             {
-                bool is_in_level_trigger = level_trigger.HasOverlappingBodies();
+                bool is_in_level_trigger = level_trigger.OverlapsBody(character);
 
                 if (is_in_level_trigger)
                 {
