@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://Scirpts/GameOverScreen.cs" id="17_uoo2m"]
 [ext_resource type="Script" path="res://Scirpts/EndScore.cs" id="19_48gvf"]
 [ext_resource type="Script" path="res://Scirpts/AudioPlayer.cs" id="20_vsuvr"]
-[ext_resource type="PackedScene" uid="uid://bb6atwpfbyyx" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
+[ext_resource type="PackedScene" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7gq3"]
 radius = 14.0

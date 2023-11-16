@@ -14,19 +14,10 @@ public partial class GripperEnemy : RigidBody2D
 		player = GetNode<CharacterBody2D>("/root/GameRuntime/ProtagBody");
 		target_pos = player.Position;
 	}
-	public override void _IntegrateForces(PhysicsDirectBodyState2D state)
     public override void _IntegrateForces(PhysicsDirectBodyState2D state)
 	{
-<<<<<<< Updated upstream
-		 //Vector2 mov = new Vector2();
-		 //mov.X = Mathf.MoveToward(Position.X, target_pos.X, speed.X);
-		 //mov.Y = Mathf.MoveToward(Position.Y, target_pos.Y, speed.Y);
-		 //state.AddConstantForce(mov);
-		 //target_pos = player.Position;
-=======
 		var targ_vec = Position.DirectionTo(target_pos) * 80;
 		state.LinearVelocity = targ_vec;
 		target_pos = player.Position;
->>>>>>> Stashed changes
 	}
 }
