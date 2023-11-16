@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dk8ck7pgwd6u6"]
+[gd_scene load_steps=40 format=3 uid="uid://dk8ck7pgwd6u6"]
 
 [ext_resource type="PackedScene" uid="uid://dxdxvjy488f48" path="res://Scenes/basic_level.tscn" id="1_ehfmm"]
 [ext_resource type="PackedScene" uid="uid://cuiky6hysgle5" path="res://Scenes/Beginning.tscn" id="1_k8nr5"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://h2sp4r22jdsw" path="res://Textures/numbers.png" id="6_j1wn0"]
 [ext_resource type="PackedScene" uid="uid://bqh4ms4etgtn4" path="res://Scenes/inventory.tscn" id="7_1rcwc"]
 [ext_resource type="PackedScene" uid="uid://docgx7pejingu" path="res://Scenes/village_level.tscn" id="7_rdjyb"]
+[ext_resource type="Script" path="res://Scirpts/EnemyCollisionManager.cs" id="10_cfyhc"]
 [ext_resource type="Script" path="res://Scirpts/CurrencyCounter.cs" id="11_bxdun"]
 [ext_resource type="Script" path="res://Scirpts/Inventory.cs" id="14_ky7nc"]
 [ext_resource type="Script" path="res://Scirpts/LevelManager.cs" id="15_g7afq"]
@@ -20,7 +21,12 @@
 [ext_resource type="Script" path="res://Scirpts/GameOverScreen.cs" id="17_uoo2m"]
 [ext_resource type="Script" path="res://Scirpts/EndScore.cs" id="19_48gvf"]
 [ext_resource type="Script" path="res://Scirpts/AudioPlayer.cs" id="20_vsuvr"]
-[ext_resource type="PackedScene" uid="uid://bb6atwpfbyyx" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
+[ext_resource type="PackedScene" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
+[ext_resource type="PackedScene" uid="uid://d1iiuyfdtxq2r" path="res://Scenes/enemy.tscn" id="22_wlsfu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7gq3"]
+radius = 14.0
+height = 96.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yeuhl"]
 atlas = ExtResource("6_j1wn0")
@@ -104,6 +110,13 @@ position = Vector2(1420, 0)
 [node name="ProtagBody" parent="." instance=ExtResource("3_3j688")]
 position = Vector2(64, 608)
 script = ExtResource("4_16rww")
+
+[node name="EnemyCollider" type="Area2D" parent="ProtagBody"]
+script = ExtResource("10_cfyhc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtagBody/EnemyCollider"]
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_w7gq3")
 
 [node name="CurrencyCounter" type="TextureRect" parent="."]
 texture_filter = 1
@@ -278,3 +291,8 @@ script = ExtResource("20_vsuvr")
 
 [node name="ItemSelection" parent="." instance=ExtResource("21_dqs2n")]
 texture_filter = 1
+
+[node name="Enemy" parent="." instance=ExtResource("22_wlsfu")]
+position = Vector2(590, 570)
+
+[connection signal="area_entered" from="ProtagBody/EnemyCollider" to="ProtagBody/EnemyCollider" method="OnAreaEntered"]
