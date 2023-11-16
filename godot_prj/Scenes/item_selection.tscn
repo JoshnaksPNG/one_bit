@@ -1,0 +1,214 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb6atwpfbyyx"]
+
+[ext_resource type="Texture2D" uid="uid://cmocs6dhjq4el" path="res://Textures/item_selection.png" id="1_72s5a"]
+[ext_resource type="Texture2D" uid="uid://c0qlgh8mkulsh" path="res://Textures/empty_item_slot.png" id="2_aw8q2"]
+[ext_resource type="Script" path="res://Scirpts/ItemChoice.cs" id="2_ng4lm"]
+[ext_resource type="Texture2D" uid="uid://cve8shh3u5fjv" path="res://Textures/item_hover.png" id="3_dw4f3"]
+[ext_resource type="FontFile" uid="uid://bx6uvk586sj8d" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="4_wbf3h"]
+[ext_resource type="Script" path="res://Scirpts/ChoiceSelector.cs" id="5_263m0"]
+
+[node name="ItemSelection" type="TextureRect"]
+offset_left = 80.0
+offset_top = 56.0
+offset_right = 1180.0
+offset_bottom = 636.0
+texture = ExtResource("1_72s5a")
+script = ExtResource("2_ng4lm")
+
+[node name="Item0" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 88.0
+offset_top = 144.0
+offset_right = 258.0
+offset_bottom = 284.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item0"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item1" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 272.0
+offset_top = 144.0
+offset_right = 442.0
+offset_bottom = 284.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item1"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 464.0
+offset_top = 152.0
+offset_right = 634.0
+offset_bottom = 292.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item2"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item3" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 648.0
+offset_top = 152.0
+offset_right = 818.0
+offset_bottom = 292.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item3"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item4" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 832.0
+offset_top = 160.0
+offset_right = 1002.0
+offset_bottom = 300.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item4"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item5" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 80.0
+offset_top = 304.0
+offset_right = 250.0
+offset_bottom = 444.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item5"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item6" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 272.0
+offset_top = 304.0
+offset_right = 442.0
+offset_bottom = 444.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item6"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item7" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 464.0
+offset_top = 304.0
+offset_right = 634.0
+offset_bottom = 444.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item7"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item8" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 648.0
+offset_top = 312.0
+offset_right = 818.0
+offset_bottom = 452.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item8"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="Item9" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 840.0
+offset_top = 312.0
+offset_right = 1010.0
+offset_bottom = 452.0
+texture = ExtResource("2_aw8q2")
+
+[node name="ItemSelector" type="TextureButton" parent="Item9"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_aw8q2")
+texture_pressed = ExtResource("2_aw8q2")
+texture_hover = ExtResource("3_dw4f3")
+script = ExtResource("5_263m0")
+
+[node name="ItemDescription" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 464.0
+offset_right = 1000.0
+offset_bottom = 552.0
+theme_override_fonts/normal_font = ExtResource("4_wbf3h")
