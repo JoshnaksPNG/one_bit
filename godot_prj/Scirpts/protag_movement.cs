@@ -260,7 +260,6 @@ public partial class protag_movement : CharacterBody2D
                     case PlayerStatModifier.ModifiedStat.Currency:
                         {
                             currencyCounter.addCurrency(current_modifier.value);
-                            current_modifier.duration = 0;
                             break;
                         }
                     default:
