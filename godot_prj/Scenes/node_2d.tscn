@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dk8ck7pgwd6u6"]
+[gd_scene load_steps=42 format=3 uid="uid://dk8ck7pgwd6u6"]
 
 [ext_resource type="PackedScene" uid="uid://dxdxvjy488f48" path="res://Scenes/basic_level.tscn" id="1_ehfmm"]
 [ext_resource type="PackedScene" uid="uid://cuiky6hysgle5" path="res://Scenes/Beginning.tscn" id="1_k8nr5"]
@@ -21,7 +21,10 @@
 [ext_resource type="Script" path="res://Scirpts/GameOverScreen.cs" id="17_uoo2m"]
 [ext_resource type="Script" path="res://Scirpts/EndScore.cs" id="19_48gvf"]
 [ext_resource type="Script" path="res://Scirpts/AudioPlayer.cs" id="20_vsuvr"]
-[ext_resource type="PackedScene" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
+[ext_resource type="PackedScene" uid="uid://bb6atwpfbyyx" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
+[ext_resource type="Texture2D" uid="uid://bi0miw17sruvg" path="res://Textures/restert_button_0.png" id="22_t00v1"]
+[ext_resource type="Texture2D" uid="uid://bjxcyncqocxib" path="res://Textures/restert_button_1.png" id="23_pqvlc"]
+[ext_resource type="Script" path="res://Scenes/RestartButton.cs" id="24_a4m1f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7gq3"]
 radius = 14.0
@@ -285,6 +288,17 @@ offset_top = 16.0
 offset_right = 358.0
 offset_bottom = 79.0
 texture = SubResource("AtlasTexture_dq1ei")
+
+[node name="TextureButton" type="TextureButton" parent="GameOverScreen"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 552.0
+offset_right = 88.0
+offset_bottom = 592.0
+texture_normal = ExtResource("22_t00v1")
+texture_pressed = ExtResource("23_pqvlc")
+texture_hover = ExtResource("23_pqvlc")
+script = ExtResource("24_a4m1f")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(640, 384)

@@ -5,9 +5,9 @@ using System.Diagnostics;
 public partial class GameOverScreen : TextureRect
 {
 	public EndScore endScore;
-	bool is_game_over = false;
+	public bool is_game_over = false;
 
-	double screen_opacity = 0;
+	public double screen_opacity = 0;
 	double opacity_rate = 0.75d;
 
 	// Called when the node enters the scene tree for the first time.

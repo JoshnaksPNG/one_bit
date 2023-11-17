@@ -7,7 +7,7 @@ public partial class ItemChoice : TextureRect
 {
 	RichTextLabel description;
 
-	List<Item> selected_items;
+	public List<Item> selected_items;
 
 	public Item[] available_items;
 
@@ -15,7 +15,7 @@ public partial class ItemChoice : TextureRect
 
 	Inventory inventory;
 
-	bool has_selected_items = false;
+	public bool has_selected_items = false;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

@@ -3,9 +3,9 @@ using System;
 
 public partial class Inventory : TextureRect
 {
-	Item[] items;
+	public Item[] items;
 
-	const int item_slots = 6;
+	public const int item_slots = 6;
 
 	CurrencyCounter counter;
 
@@ -13,7 +13,7 @@ public partial class Inventory : TextureRect
 
 	RichTextLabel description;
 
-	TextureRect[] item_icons;
+	public TextureRect[] item_icons;
 
 	protag_movement movementScript;
 

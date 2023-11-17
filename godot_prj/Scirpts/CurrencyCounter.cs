@@ -6,7 +6,7 @@ using System.Diagnostics;
 public partial class CurrencyCounter : TextureRect
 {
 	const int MAXLOG10 = 6;
-	const int START_CURRENCY = 100;
+	const int START_CURRENCY = 7000;
 	const double LOST_PER_SECOND = 5;
 
 	TextureRect[] digits;
@@ -66,7 +66,7 @@ public partial class CurrencyCounter : TextureRect
 		
 	}
 
-	private void updateCounter(int currency)
+	public void updateCounter(int currency)
 	{
 		// Determine Number of Digits That Should Be Displayed (Remove Leading Zeros) (Leave Last Zero)
 		int maxDigit = currency == 0 ? 0 : (int) Math.Floor(Math.Log10((double)currency));

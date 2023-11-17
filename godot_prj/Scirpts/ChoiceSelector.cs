@@ -8,7 +8,7 @@ public partial class ChoiceSelector : TextureButton
     int index;
 
 	Texture2D selected;
-	Texture2D unselected;
+	public Texture2D unselected;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

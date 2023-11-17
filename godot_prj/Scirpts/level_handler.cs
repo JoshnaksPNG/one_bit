@@ -7,7 +7,7 @@ public partial class level_handler : Node2D
 {
 	const int collision_layer = 1;
 
-	public int enemies = 1;
+	public int enemies = 0;
 	Node2D doors;
 	StaticBody2D door_collision;
 
@@ -49,7 +49,7 @@ public partial class level_handler : Node2D
 		if (enemies <= 0)
 		{
 			enemies = 0;
-
+			clear_enemies();
 		}
 		else
 		{
@@ -77,8 +77,19 @@ public partial class level_handler : Node2D
 
 			enemyBeingSpawned.Position = spawners[i].Position;
 			enemy_tree.AddChild(enemyBeingSpawned);
+			enemies++;
 		}
 
 		setEnemies(spawner_count);
+	}
+
+	public void clear_enemies()
+	{
+        Godot.Collections.Array<Node> enemy_list = enemy_tree.GetChildren();
+
+		for (int i = 0; i < enemy_list.Count; i++)
+		{
+			enemy_list[i].QueueFree();
+		}
 	}
 }

@@ -21,16 +21,16 @@ public partial class LevelManager : Node2D
 
 	Node2D village;
 
-	Node2D beginning;
+	public Node2D beginning;
 
-	Node2D current_level;
-	level_handler current_handler; // Access Level Handler for current_level
+	public Node2D current_level;
+	public level_handler current_handler; // Access Level Handler for current_level
 
 	Node2D next_level;
 
 	CharacterBody2D character;
 
-	int level_number;
+	public int level_number;
 
 	public bool is_changing_level = false;
 
@@ -42,7 +42,7 @@ public partial class LevelManager : Node2D
 
     CurrencyCounter currency_counter;
 
-	bool is_game_over = false;
+	public bool is_game_over = false;
 
     GameOverScreen game_over;
 
@@ -185,4 +185,17 @@ public partial class LevelManager : Node2D
         }
 		
 	}
+
+    public void clearAllEnemies()
+    {
+        for(int i = 0; i < normal_levels.Length; ++i) 
+        {
+            ((level_handler)normal_levels[i]).clear_enemies();
+        }
+
+        for (int i = 0; i < boss_levels.Length; ++i)
+        {
+            ((level_handler)boss_levels[i]).clear_enemies();
+        }
+    }
 }
