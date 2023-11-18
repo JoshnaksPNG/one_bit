@@ -14,6 +14,7 @@ public partial class AudioPlayer : AudioStreamPlayer2D
 
 		music_library.Add("village", ResourceLoader.Load<AudioStream>("res://Audio/town_music.mp3"));
         music_library.Add("boss", ResourceLoader.Load<AudioStream>("res://Audio/boss_music.mp3"));
+        music_library.Add("normal", ResourceLoader.Load<AudioStream>("res://Audio/boss_music.mp3"));
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

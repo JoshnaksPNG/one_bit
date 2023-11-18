@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlk7mpwf13uka"]
+[gd_scene load_steps=8 format=3 uid="uid://dlk7mpwf13uka"]
 
 [ext_resource type="Script" path="res://Scirpts/level_handler.cs" id="1_2xrgh"]
 [ext_resource type="Texture2D" uid="uid://cg8cap8gwcc13" path="res://Textures/background.png" id="2_et6xd"]
 [ext_resource type="Texture2D" uid="uid://cc8kv1tgrnqj8" path="res://Textures/tileset.png" id="3_qoeal"]
 [ext_resource type="Texture2D" uid="uid://dpajnrvkk6ljo" path="res://Textures/door.png" id="4_68yo4"]
-[ext_resource type="Script" path="res://Scirpts/Area2D.cs" id="5_vus82"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7deue"]
 texture = ExtResource("3_qoeal")
@@ -91,9 +90,6 @@ sources/1 = SubResource("TileSetAtlasSource_7deue")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trgta"]
 size = Vector2(22.4, 44.8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwumw"]
-size = Vector2(69, 65)
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_2xrgh")
 
@@ -175,11 +171,9 @@ shape = SubResource("RectangleShape2D_trgta")
 position = Vector2(251.2, 96)
 shape = SubResource("RectangleShape2D_trgta")
 
-[node name="TempDoorTrigger" type="Area2D" parent="."]
-script = ExtResource("5_vus82")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TempDoorTrigger"]
-position = Vector2(976, 616)
-shape = SubResource("RectangleShape2D_uwumw")
-
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemySpawners" type="Node2D" parent="."]
+
+[node name="Spawner0" type="Node2D" parent="EnemySpawners"]
+position = Vector2(832, 552)

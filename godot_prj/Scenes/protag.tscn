@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cvh2pem7fhako" path="res://Textures/attack_4.png" id="18_ik1t2"]
 [ext_resource type="Texture2D" uid="uid://3rkmc4fgbw2c" path="res://Textures/attack_5.png" id="19_gxuvw"]
 [ext_resource type="Texture2D" uid="uid://c0qlgh8mkulsh" path="res://Textures/empty_item_slot.png" id="20_45qvq"]
-[ext_resource type="Script" path="res://Scenes/AttackBox.cs" id="21_wjj1r"]
+[ext_resource type="Script" path="res://Scirpts/AttackBox.cs" id="21_tj2e2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6764r"]
 radius = 14.5
@@ -165,7 +165,7 @@ sprite_frames = SubResource("SpriteFrames_ik61u")
 frame_progress = 0.0128636
 
 [node name="Area2D" type="Area2D" parent="AttackRight"]
-script = ExtResource("21_wjj1r")
+script = ExtResource("21_tj2e2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRight/Area2D"]
 position = Vector2(1.25, -8)
@@ -179,7 +179,7 @@ frame_progress = 0.821079
 flip_h = true
 
 [node name="Area2D" type="Area2D" parent="AttackLeft"]
-script = ExtResource("21_wjj1r")
+script = ExtResource("21_tj2e2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackLeft/Area2D"]
 position = Vector2(0, -8)

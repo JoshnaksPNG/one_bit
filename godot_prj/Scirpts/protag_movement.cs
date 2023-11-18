@@ -13,6 +13,8 @@ public partial class protag_movement : CharacterBody2D
     public const float Damage = 30f;
     public const float AttackSpeed = 0.25f;
 
+    const double inv_time = 0.5d;
+
 
 	// Custom Movement Variables
 	private bool hasDoubleJump = false;
@@ -30,6 +32,8 @@ public partial class protag_movement : CharacterBody2D
     public bool can_attack = false;
     double attack_timer = AttackSpeed;
     bool right_active;
+
+    double dmg_timer = 0;
 
 
     // Modifiers
@@ -188,7 +192,6 @@ public partial class protag_movement : CharacterBody2D
                 {
                     if (Input.IsActionJustPressed("attack"))
                     {
-
                         attack_timer = realAttackSpeed;
                         is_attacking = true;
                     }
@@ -203,6 +206,8 @@ public partial class protag_movement : CharacterBody2D
                         is_attacking = false;
                         leftAttacker.Play("default");
                         rightAttacker.Play("default");
+                        rightBox.is_active = false;
+                        leftBox.is_active = false;
                     }
                     else 
                     {
@@ -248,6 +253,7 @@ public partial class protag_movement : CharacterBody2D
             }
 
             Velocity = velocity;
+            dmg_timer -= delta;
             MoveAndSlide();
             ModifyRealStats(delta);
         }
@@ -331,6 +337,16 @@ public partial class protag_movement : CharacterBody2D
 
                 current_modifier.duration -= delta;
             }
+        }
+    }
+
+    public void damage(float damage) 
+    {
+        if (dmg_timer <= 0)
+        {
+            dmg_timer = inv_time;
+
+            currencyCounter.addCurrency(damage * -1);
         }
     }
 }

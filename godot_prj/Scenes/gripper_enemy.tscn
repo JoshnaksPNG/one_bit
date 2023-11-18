@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1iiuyfdtxq2r"]
+[gd_scene load_steps=6 format=3 uid="uid://d1iiuyfdtxq2r"]
 
 [ext_resource type="Script" path="res://Scirpts/GripperEnemy.cs" id="1_l5mji"]
 [ext_resource type="Texture2D" uid="uid://b38w4fq3uuslb" path="res://Textures/gripper.png" id="2_8mcrk"]
+[ext_resource type="Script" path="res://Scenes/DamageArea.cs" id="2_55hap"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpjmi"]
 radius = 12.5399
@@ -16,9 +17,10 @@ script = ExtResource("1_l5mji")
 position = Vector2(0.5, 0)
 shape = SubResource("CircleShape2D_kpjmi")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DamageArea" type="Area2D" parent="."]
+script = ExtResource("2_55hap")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_ifstv")
 

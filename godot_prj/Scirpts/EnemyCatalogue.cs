@@ -15,4 +15,10 @@ public partial class EnemyCatalogue : Node
 	{
 		{ "gripper", ResourceLoader.Load<PackedScene>("res://Scenes/gripper_enemy.tscn") }
 	};
+
+	// Dictionary Containing All Boss Types
+    public static Dictionary<string, PackedScene> all_bosses = new Dictionary<string, PackedScene>()
+    {
+        { "jumper", ResourceLoader.Load<PackedScene>("res://Scenes/jumper_boss.tscn") }
+    };
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dk8ck7pgwd6u6"]
+[gd_scene load_steps=40 format=3 uid="uid://dk8ck7pgwd6u6"]
 
 [ext_resource type="PackedScene" uid="uid://dxdxvjy488f48" path="res://Scenes/basic_level.tscn" id="1_ehfmm"]
 [ext_resource type="PackedScene" uid="uid://cuiky6hysgle5" path="res://Scenes/Beginning.tscn" id="1_k8nr5"]
@@ -10,9 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bjt8xdtrnbi8r" path="res://Textures/currency_counter.png" id="5_gy2x3"]
 [ext_resource type="PackedScene" uid="uid://d3bs7doq6mon7" path="res://Scenes/basic_level_3.tscn" id="5_oubg8"]
 [ext_resource type="Texture2D" uid="uid://h2sp4r22jdsw" path="res://Textures/numbers.png" id="6_j1wn0"]
-[ext_resource type="PackedScene" uid="uid://bqh4ms4etgtn4" path="res://Scenes/inventory.tscn" id="7_1rcwc"]
+[ext_resource type="PackedScene" uid="uid://x5c7fk6uawk" path="res://Scenes/inventory.tscn" id="7_1rcwc"]
 [ext_resource type="PackedScene" uid="uid://docgx7pejingu" path="res://Scenes/village_level.tscn" id="7_rdjyb"]
-[ext_resource type="Script" path="res://Scirpts/EnemyCollisionManager.cs" id="10_cfyhc"]
 [ext_resource type="Script" path="res://Scirpts/CurrencyCounter.cs" id="11_bxdun"]
 [ext_resource type="Script" path="res://Scirpts/Inventory.cs" id="14_ky7nc"]
 [ext_resource type="Script" path="res://Scirpts/LevelManager.cs" id="15_g7afq"]
@@ -24,11 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bb6atwpfbyyx" path="res://Scenes/item_selection.tscn" id="21_dqs2n"]
 [ext_resource type="Texture2D" uid="uid://bi0miw17sruvg" path="res://Textures/restert_button_0.png" id="22_t00v1"]
 [ext_resource type="Texture2D" uid="uid://bjxcyncqocxib" path="res://Textures/restert_button_1.png" id="23_pqvlc"]
-[ext_resource type="Script" path="res://Scenes/RestartButton.cs" id="24_a4m1f"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w7gq3"]
-radius = 14.0
-height = 96.0
+[ext_resource type="Script" path="res://Scirpts/RestartButton.cs" id="23_wujda"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yeuhl"]
 atlas = ExtResource("6_j1wn0")
@@ -112,13 +107,6 @@ position = Vector2(1420, 0)
 [node name="ProtagBody" parent="." instance=ExtResource("3_3j688")]
 position = Vector2(64, 608)
 script = ExtResource("4_16rww")
-
-[node name="EnemyCollider" type="Area2D" parent="ProtagBody"]
-script = ExtResource("10_cfyhc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtagBody/EnemyCollider"]
-position = Vector2(2, 0)
-shape = SubResource("CapsuleShape2D_w7gq3")
 
 [node name="CurrencyCounter" type="TextureRect" parent="."]
 texture_filter = 1
@@ -298,11 +286,8 @@ offset_bottom = 592.0
 texture_normal = ExtResource("22_t00v1")
 texture_pressed = ExtResource("23_pqvlc")
 texture_hover = ExtResource("23_pqvlc")
-script = ExtResource("24_a4m1f")
+script = ExtResource("23_wujda")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(640, 384)
-volume_db = 10.0
 script = ExtResource("20_vsuvr")
-
-[connection signal="area_entered" from="ProtagBody/EnemyCollider" to="ProtagBody/EnemyCollider" method="OnAreaEntered"]

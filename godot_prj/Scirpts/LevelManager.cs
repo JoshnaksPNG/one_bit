@@ -36,17 +36,23 @@ public partial class LevelManager : Node2D
 
 	public bool is_village;
     public bool is_beginning = true;
+    public bool is_boss = false;
+    bool was_normal_level = true;
 
-	double lvl_change_velocity;
+    double lvl_change_velocity;
 	double lvl_char_velocity;
 
     CurrencyCounter currency_counter;
 
 	public bool is_game_over = false;
+    
+    
 
     GameOverScreen game_over;
 
     AudioPlayer audioPlayer;
+
+    bool is_started = false;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -88,6 +94,13 @@ public partial class LevelManager : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+        if(!is_started) 
+        {
+            audioPlayer.setMusic("normal");
+            audioPlayer.setPlay(true);
+            is_started = true;
+        }
+
 		if(!is_game_over) 
 		{
             if (is_changing_level)
@@ -114,7 +127,7 @@ public partial class LevelManager : Node2D
                     if (current_level != village)
                     {
                         //current_handler.enemies = 1;
-                        current_handler.instansiate_enemies();
+                        current_handler.instansiate_enemies(is_boss);
                         current_handler.displayDoors(true);
                     }
                     
@@ -142,6 +155,8 @@ public partial class LevelManager : Node2D
                         is_village = true;
                         audioPlayer.setMusic("village");
                         audioPlayer.setPlay(true);
+                        was_normal_level = false;
+                        is_boss = false;
                     }
                     else if (level_number % BOSSOFFSET == BOSSOFFSET - 1) // If Entering Boss Level
                     {
@@ -152,6 +167,8 @@ public partial class LevelManager : Node2D
                         is_village = false;
                         audioPlayer.setMusic("boss");
                         audioPlayer.setPlay(true);
+                        was_normal_level = false;
+                        is_boss = true;
                     }
                     else // If Entering Normal Level
                     {
@@ -165,6 +182,15 @@ public partial class LevelManager : Node2D
 
                         ++level_number;
                         is_village = false;
+
+                        if (!was_normal_level)
+                        {
+                            audioPlayer.setMusic("normal");
+                            audioPlayer.setPlay(true);
+                        }
+
+                        was_normal_level = true;
+                        is_boss= false;
                     }
 
                     // Move Next Level To Position Ready To Transition

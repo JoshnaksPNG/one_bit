@@ -20,8 +20,8 @@ public partial class EnemyCollisionManager : Area2D
 		var p = area.GetParent<RigidBody2D>();
 		if (p.GetGroups().Contains("Enemy"))
 		{
-			GD.Print("fuck me");
-			manager.Call("addCurrency", -10);
+			//GD.Print("fuck me");
+			//manager.Call("addCurrency", -10);
 		}
 		
 	}

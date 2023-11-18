@@ -68,12 +68,23 @@ public partial class level_handler : Node2D
 		door_collision.SetCollisionLayerValue(collision_layer, disp);
 	}
 
-	public void instansiate_enemies()
+	public void instansiate_enemies(bool is_boss)
 	{
 		int spawner_count = spawners.Count;
 		for (int i = 0; i < spawner_count; i++) 
 		{
-			RigidBody2D enemyBeingSpawned = EnemyCatalogue.all_enemies["gripper"].Instantiate<RigidBody2D>();
+			RigidBody2D enemyBeingSpawned;
+
+
+			if (!is_boss)
+			{
+				enemyBeingSpawned = EnemyCatalogue.all_enemies["gripper"].Instantiate<RigidBody2D>();
+			}
+			else
+			{
+				enemyBeingSpawned = EnemyCatalogue.all_bosses["jumper"].Instantiate<RigidBody2D>();
+			}
+			
 
 			enemyBeingSpawned.Position = spawners[i].Position;
 			enemy_tree.AddChild(enemyBeingSpawned);
