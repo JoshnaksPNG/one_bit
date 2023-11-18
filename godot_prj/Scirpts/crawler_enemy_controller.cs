@@ -13,7 +13,7 @@ public partial class crawler_enemy_controller : RigidBody2D, killable
 
     public float health = 40f;
 
-    const double inv_time = 0.12;
+    const double inv_time = 0.26;
     public double dmg_cooldown = 0;
 
     // Called when the node enters the scene tree for the first time.
