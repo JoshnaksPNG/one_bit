@@ -279,7 +279,7 @@ offset_right = 358.0
 offset_bottom = 79.0
 texture = SubResource("AtlasTexture_dq1ei")
 
-[node name="TextureButton" type="TextureButton" parent="GameOverScreen"]
+[node name="RestartButton" type="TextureButton" parent="GameOverScreen"]
 layout_mode = 0
 offset_left = 48.0
 offset_top = 552.0

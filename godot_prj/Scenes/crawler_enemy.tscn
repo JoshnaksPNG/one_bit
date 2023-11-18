@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8yw2yuknopxe"]
+
+[ext_resource type="Script" path="res://Scirpts/crawler_enemy_controller.cs" id="1_q0lvb"]
+[ext_resource type="Script" path="res://Scirpts/CrawlerDamageArea.cs" id="2_tgnuc"]
+[ext_resource type="Texture2D" uid="uid://da5m1sxu66dus" path="res://Textures/crawler_0.png" id="2_u0e8s"]
+[ext_resource type="Texture2D" uid="uid://dgul4hunw7hjl" path="res://Textures/crawler_1.png" id="3_o7upp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nmlf"]
+size = Vector2(280, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptrf4"]
+size = Vector2(304, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sxtsu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u0e8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o7upp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="crawler_enemy" type="RigidBody2D"]
+lock_rotation = true
+script = ExtResource("1_q0lvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.86102e-06, 9.53674e-07)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_6nmlf")
+
+[node name="DamageArea" type="Area2D" parent="."]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("2_tgnuc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_ptrf4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_sxtsu")
+frame_progress = 0.0564629

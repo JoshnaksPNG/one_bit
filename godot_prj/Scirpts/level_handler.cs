@@ -75,10 +75,12 @@ public partial class level_handler : Node2D
 		{
 			RigidBody2D enemyBeingSpawned;
 
-
+			Random rand = new Random();
 			if (!is_boss)
 			{
-				enemyBeingSpawned = EnemyCatalogue.all_enemies["gripper"].Instantiate<RigidBody2D>();
+				List<PackedScene> enemyList = new List<PackedScene>(EnemyCatalogue.all_enemies.Values);
+				//enemyBeingSpawned = EnemyCatalogue.all_enemies["gripper"].Instantiate<RigidBody2D>();
+				enemyBeingSpawned = enemyList[rand.Next(enemyList.Count)].Instantiate<RigidBody2D>();
 			}
 			else
 			{

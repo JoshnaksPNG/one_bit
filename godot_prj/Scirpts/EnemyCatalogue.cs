@@ -13,7 +13,8 @@ public partial class EnemyCatalogue : Node
 	// Dictionary Containing All Enemy Types
     public static Dictionary<string, PackedScene> all_enemies = new Dictionary<string, PackedScene>() 
 	{
-		{ "gripper", ResourceLoader.Load<PackedScene>("res://Scenes/gripper_enemy.tscn") }
+		{ "gripper", ResourceLoader.Load<PackedScene>("res://Scenes/gripper_enemy.tscn") },
+		{ "crawler", ResourceLoader.Load<PackedScene>("res://Scenes/crawler_enemy.tscn") }
 	};
 
 	// Dictionary Containing All Boss Types

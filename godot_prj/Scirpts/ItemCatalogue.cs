@@ -55,5 +55,24 @@ public partial class ItemCatalogue : Node
         {
             new PlayerStatModifier(PlayerStatModifier.ModifiedStat.JumpVelocity, 10d, 100f)
         }),
+
+        new Item("res://Textures/brew_item.png", "Mysterious Brew", 3000f, "Reduces your speed by half for 30 seconds, but tripples your strength for 40 seconds", new PlayerStatModifier[]
+        {
+            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.Speed, 30d, -150f),
+            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.Damage, 30d, 60f)
+        }),
+
+        new Item("res://Textures/knife_item.png", "Mother's Kitchen Knife", 4000f, "You shouldn't be playing with this...", new PlayerStatModifier[]
+        {
+            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.Damage, 30d, 60f),
+            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.AttackSpeed, 30d, -0.13f)
+        }),
+
+        new Item("res://Textures/watch_item.png", "Grandfather's Pocketwatch", 500f, "Doubles your running and dashing speed for 10 seconds", new PlayerStatModifier[]
+        {
+            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.Speed, 10d, 300f),
+            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.DashVelocity, 10d, 900f),
+            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.DashDuration, 10d, -0.15f)
+        }),
     };
 }

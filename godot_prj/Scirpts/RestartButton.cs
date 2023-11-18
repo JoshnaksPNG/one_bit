@@ -54,6 +54,7 @@ public partial class RestartButton : TextureButton
 		itemChoice.Visible = true;
 		itemChoice.has_selected_items = false;
 		itemChoice.selected_items = new List<Item>();
+		itemChoice.available_items = new Item[10];
 		itemChoice.PopulateSelection();
 
 		currencyCounter.currencyAmount = 7000;
