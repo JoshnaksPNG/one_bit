@@ -46,9 +46,9 @@ public partial class ItemCatalogue : Node
             new PlayerStatModifier(PlayerStatModifier.ModifiedStat.JumpVelocity, 50d, -200f)
         }),
 
-        new Item("res://Textures/wallet_item.png", "Wallet You Found On The Ground", 3000f, "Slowly recharges your currency over 10 seconds", new PlayerStatModifier[]
+        new Item("res://Textures/wallet_item.png", "Wallet You Found On The Ground", 3000f, "Slowly recharges your currency over 15 seconds", new PlayerStatModifier[]
         {
-            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.Currency, 10d, 0.5f)
+            new PlayerStatModifier(PlayerStatModifier.ModifiedStat.Currency, 15d, 0.5f)
         }),
 
         new Item("res://Textures/lead_item.png", "Chunk Of Lead", 3000f, "Decreases your jump height by half for 50 seconds", new PlayerStatModifier[]

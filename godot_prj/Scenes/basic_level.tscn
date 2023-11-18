@@ -144,14 +144,6 @@ layer_0/tile_data = PackedInt32Array(131082, 262145, 1, 196597, 327681, 1, 13106
 position = Vector2(640, 360)
 scale = Vector2(2.5, 2.5)
 
-[node name="DoorTextureLeft" type="TextureRect" parent="Doors"]
-texture_filter = 1
-offset_left = -264.0
-offset_top = 72.0
-offset_right = -240.0
-offset_bottom = 120.0
-texture = ExtResource("3_ar85w")
-
 [node name="DoorTextureRight" type="TextureRect" parent="Doors"]
 texture_filter = 1
 offset_left = 240.0
@@ -186,3 +178,22 @@ position = Vector2(272, 192)
 position = Vector2(704, 600)
 
 [node name="Enemies" type="Node2D" parent="."]
+
+[node name="LeftDoor" type="Node2D" parent="."]
+
+[node name="DoorTextureLeft" type="TextureRect" parent="LeftDoor"]
+texture_filter = 1
+offset_left = -20.0
+offset_top = 540.0
+offset_right = 4.0
+offset_bottom = 588.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_ar85w")
+
+[node name="DoorCollisions2" type="StaticBody2D" parent="LeftDoor"]
+position = Vector2(640, 360)
+scale = Vector2(2.5, 2.5)
+
+[node name="DoorCollisionLeft" type="CollisionShape2D" parent="LeftDoor/DoorCollisions2"]
+position = Vector2(-251.2, 96)
+shape = SubResource("RectangleShape2D_trgta")

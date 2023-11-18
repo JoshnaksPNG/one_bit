@@ -97,7 +97,12 @@ public partial class ItemChoice : TextureRect
 
 		for(int i = 0; i <  available_items.Length; ++i) 
 		{
-			available_items[i] = ItemCatalogue.all_items[rand.Next(ItemCatalogue.all_items.Length)];
+			Item newItem;
+			do
+			{
+				newItem = ItemCatalogue.all_items[rand.Next(ItemCatalogue.all_items.Length)];
+			} while (available_items.Contains(newItem));
+			available_items[i] = newItem;
 			setItemTexture(i);
 		}
 	}

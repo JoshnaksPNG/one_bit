@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://docgx7pejingu"]
+[gd_scene load_steps=9 format=3 uid="uid://docgx7pejingu"]
 
 [ext_resource type="Script" path="res://Scirpts/level_handler.cs" id="1_n2upo"]
 [ext_resource type="Texture2D" uid="uid://cg8cap8gwcc13" path="res://Textures/background.png" id="2_n1xk4"]
 [ext_resource type="Texture2D" uid="uid://bhlnclqtlgpp3" path="res://Textures/villiage_background.png" id="2_odmyd"]
 [ext_resource type="Texture2D" uid="uid://cc8kv1tgrnqj8" path="res://Textures/tileset.png" id="3_2hpg8"]
+[ext_resource type="Texture2D" uid="uid://dpajnrvkk6ljo" path="res://Textures/door.png" id="5_tuohg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7deue"]
 texture = ExtResource("3_2hpg8")
@@ -87,6 +88,9 @@ tile_size = Vector2i(24, 24)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_7deue")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_popvc"]
+size = Vector2(22.4, 44.8)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_n2upo")
 
@@ -136,3 +140,22 @@ tile_set = SubResource("TileSet_sgwa2")
 cell_quadrant_size = 24
 format = 2
 layer_0/tile_data = PackedInt32Array(131082, 262145, 1, 196597, 327681, 1, 131061, 131073, 0, 65525, 131073, 0, -11, 131073, 0, -65547, 131073, 0, -131083, 131073, 0, -196619, 131073, 0, -262155, 131073, 0, -327690, 196609, 0, -327689, 196609, 0, -327688, 196609, 0, -327687, 196609, 0, -327686, 196609, 0, -327685, 196609, 0, -327684, 196609, 0, -327683, 196609, 0, -327682, 196609, 0, -327681, 196609, 0, -393216, 196609, 0, -393215, 196609, 0, -393214, 196609, 0, -393213, 196609, 0, -393212, 196609, 0, -393211, 196609, 0, -393210, 196609, 0, -393209, 196609, 0, -393208, 196609, 0, -393207, 196609, 0, -327670, 196609, 1, -262134, 196609, 1, -196598, 196609, 1, -131062, 196609, 1, -65526, 196609, 1, 10, 196609, 1, 65546, 196609, 1, -327691, 655361, 0, -393206, 720897, 0)
+
+[node name="LeftDoor" type="Node2D" parent="."]
+
+[node name="DoorTextureLeft" type="TextureRect" parent="LeftDoor"]
+texture_filter = 1
+offset_left = -20.0
+offset_top = 540.0
+offset_right = 4.0
+offset_bottom = 588.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_tuohg")
+
+[node name="DoorCollisions2" type="StaticBody2D" parent="LeftDoor"]
+position = Vector2(640, 360)
+scale = Vector2(2.5, 2.5)
+
+[node name="DoorCollisionLeft" type="CollisionShape2D" parent="LeftDoor/DoorCollisions2"]
+position = Vector2(-251.2, 96)
+shape = SubResource("RectangleShape2D_popvc")

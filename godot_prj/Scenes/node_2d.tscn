@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dk8ck7pgwd6u6"]
+[gd_scene load_steps=42 format=3 uid="uid://dk8ck7pgwd6u6"]
 
 [ext_resource type="PackedScene" uid="uid://dxdxvjy488f48" path="res://Scenes/basic_level.tscn" id="1_ehfmm"]
 [ext_resource type="PackedScene" uid="uid://cuiky6hysgle5" path="res://Scenes/Beginning.tscn" id="1_k8nr5"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://bi0miw17sruvg" path="res://Textures/restert_button_0.png" id="22_t00v1"]
 [ext_resource type="Texture2D" uid="uid://bjxcyncqocxib" path="res://Textures/restert_button_1.png" id="23_pqvlc"]
 [ext_resource type="Script" path="res://Scirpts/RestartButton.cs" id="23_wujda"]
+[ext_resource type="Texture2D" uid="uid://buqqem43mojcx" path="res://Textures/title_screen.png" id="25_p0to6"]
+[ext_resource type="Script" path="res://Scirpts/TitleScreen.cs" id="26_kjod8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yeuhl"]
 atlas = ExtResource("6_j1wn0")
@@ -291,3 +293,9 @@ script = ExtResource("23_wujda")
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(640, 384)
 script = ExtResource("20_vsuvr")
+
+[node name="TitleScreen" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("25_p0to6")
+script = ExtResource("26_kjod8")

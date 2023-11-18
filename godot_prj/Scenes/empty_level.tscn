@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlk7mpwf13uka"]
+[gd_scene load_steps=9 format=3 uid="uid://dlk7mpwf13uka"]
 
 [ext_resource type="Script" path="res://Scirpts/level_handler.cs" id="1_2xrgh"]
 [ext_resource type="Texture2D" uid="uid://cg8cap8gwcc13" path="res://Textures/background.png" id="2_et6xd"]
@@ -90,6 +90,9 @@ sources/1 = SubResource("TileSetAtlasSource_7deue")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trgta"]
 size = Vector2(22.4, 44.8)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87onc"]
+size = Vector2(22.4, 44.8)
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_2xrgh")
 
@@ -177,3 +180,22 @@ shape = SubResource("RectangleShape2D_trgta")
 
 [node name="Spawner0" type="Node2D" parent="EnemySpawners"]
 position = Vector2(832, 552)
+
+[node name="LeftDoor" type="Node2D" parent="."]
+
+[node name="DoorTextureLeft" type="TextureRect" parent="LeftDoor"]
+texture_filter = 1
+offset_left = -20.0
+offset_top = 540.0
+offset_right = 4.0
+offset_bottom = 588.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_68yo4")
+
+[node name="DoorCollisions2" type="StaticBody2D" parent="LeftDoor"]
+position = Vector2(640, 360)
+scale = Vector2(2.5, 2.5)
+
+[node name="DoorCollisionLeft" type="CollisionShape2D" parent="LeftDoor/DoorCollisions2"]
+position = Vector2(-251.2, 96)
+shape = SubResource("RectangleShape2D_87onc")

@@ -59,7 +59,7 @@ public partial class Inventory : TextureRect
         }
 
         current_item = index;
-		description.Text = items[index].name + "\n\n" + items[index].description;
+		description.Text = items[index].name + "\n\nValue: " + items[index].price + "\n\n" + items[index].description;
 	}
 
 	public void setItem(int index, Item item)
