@@ -11,7 +11,7 @@ public partial class protag_movement : CharacterBody2D
     public const float DashVelocity = 900f;
 
     public const float Damage = 30f;
-    public const float AttackSpeed = 0.2f;
+    public const float AttackSpeed = 0.25f;
 
 
 	// Custom Movement Variables
@@ -25,6 +25,12 @@ public partial class protag_movement : CharacterBody2D
     bool can_dash = true;
 
     bool was_flipped_last = true;
+
+    bool is_attacking = false;
+    public bool can_attack = false;
+    double attack_timer = AttackSpeed;
+    bool right_active;
+
 
     // Modifiers
     public List<PlayerStatModifier> modifierList;
@@ -40,7 +46,11 @@ public partial class protag_movement : CharacterBody2D
 
     CurrencyCounter currencyCounter;
 
+    AnimatedSprite2D leftAttacker;
+    AnimatedSprite2D rightAttacker;
 
+    AttackBox leftBox;
+    AttackBox rightBox;
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
@@ -56,6 +66,12 @@ public partial class protag_movement : CharacterBody2D
 
         modifierList = new List<PlayerStatModifier>();
 
+        leftAttacker = GetNode<AnimatedSprite2D>("./AttackLeft");
+        rightAttacker = GetNode<AnimatedSprite2D>("./AttackRight");
+
+        leftBox = leftAttacker.GetNode<AttackBox>("./Area2D");
+        rightBox = rightAttacker.GetNode<AttackBox>("./Area2D");
+
         // base._Ready();
     }
 
@@ -63,13 +79,13 @@ public partial class protag_movement : CharacterBody2D
 	{
         var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
-        if (!lvl_manager.is_changing_level) // Controll Normally if Level is Not Changing
+        if (!lvl_manager.is_changing_level) // Control Normally if Level is Not Changing
         {
             Vector2 velocity = Velocity;
 
             if (!is_dashing)
             {
-                
+
                 Vector2 direction = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
 
                 // Add the gravity and animations
@@ -165,7 +181,52 @@ public partial class protag_movement : CharacterBody2D
                         dash_timer = realDashDuration;
                     }
                 }
-                
+
+
+                // Handle Attack
+                if (!is_attacking)
+                {
+                    if (Input.IsActionJustPressed("attack"))
+                    {
+
+                        attack_timer = realAttackSpeed;
+                        is_attacking = true;
+                    }
+                }
+                else if(can_attack)
+                {
+                    leftBox.damage = realDamage;
+                    rightBox.damage = realDamage;
+
+                    if (attack_timer <= 0d)
+                    {
+                        is_attacking = false;
+                        leftAttacker.Play("default");
+                        rightAttacker.Play("default");
+                    }
+                    else 
+                    {
+                        if (!was_flipped_last)
+                        {
+                            leftAttacker.Play("attack");
+                            rightAttacker.Play("default");
+                            leftBox.is_active = true;
+                            rightBox.is_active = false;
+                            right_active = false;
+                        }
+                        else
+                        {
+                            leftAttacker.Play("default");
+                            rightAttacker.Play("attack");
+                            rightBox.is_active = true;
+                            leftBox.is_active = false;
+                            right_active = true;
+                        }
+
+                        attack_timer -= delta;
+                    }
+                }
+
             }
             else // If Character is Dashing
             {

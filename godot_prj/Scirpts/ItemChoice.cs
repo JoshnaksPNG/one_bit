@@ -17,6 +17,8 @@ public partial class ItemChoice : TextureRect
 
 	public bool has_selected_items = false;
 
+	protag_movement protag;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -34,6 +36,8 @@ public partial class ItemChoice : TextureRect
 			
 		}
 
+		protag = GetNode<protag_movement>("../ProtagBody");
+
 		PopulateSelection();
 	}
 
@@ -50,6 +54,7 @@ public partial class ItemChoice : TextureRect
 
 			this.Visible = false;
 			has_selected_items = true;
+			protag.can_attack = true;
 		}
 	}
 
