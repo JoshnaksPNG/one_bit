@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4l0hk30qllyb"]
+[gd_scene load_steps=6 format=3 uid="uid://cbw84cs2vj4ct"]
 
 [ext_resource type="Script" path="res://Scirpts/jumper_boss_controller.cs" id="1_nc1n5"]
 [ext_resource type="Texture2D" uid="uid://c4hq3pn884our" path="res://Textures/bugman.png" id="2_k83cb"]
-[ext_resource type="Script" path="res://Scenes/JumperDamageArea.cs" id="3_4hdso"]
+[ext_resource type="Script" path="res://Scirpts/JumperDamageArea.cs" id="3_c3kxt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6qhj"]
 size = Vector2(32, 109)
@@ -27,7 +27,7 @@ texture = ExtResource("2_k83cb")
 expand_mode = 1
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("3_4hdso")
+script = ExtResource("3_c3kxt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-4, -35.5)

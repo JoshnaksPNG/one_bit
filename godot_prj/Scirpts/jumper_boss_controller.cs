@@ -27,7 +27,13 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 
     level_handler parentHandler;
 
-    public float health = 1000f;
+    public float health = 250f;
+
+    const double inv_time = 0.12;
+    public double dmg_cooldown = 0;
+
+    // Get the gravity from the project settings to be synced with RigidBody nodes.
+    public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -38,7 +44,7 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if( mode_timer <= 0 ) 
+        if ( mode_timer <= 0 ) 
 		{
 			Random rnd = new Random();
 			MotionMode newMode;
@@ -80,7 +86,7 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 					{
 						Random rand = new Random();
 						jump((rand.Next(1800) - 900));
-						Debug.Print("jamp");
+						//Debug.Print("jamp");
 					}
 
 
@@ -100,7 +106,7 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 
 					skitter_direction_swap = (rand.NextDouble() * 0.5) + 0.5f;
 					skitter_direction *= -1;
-					Debug.Print("skatter");
+					//Debug.Print("skatter");
 				}
 
 				LinearVelocity = new Vector2 ( skitter_speed * skitter_direction, LinearVelocity.Y);
@@ -110,7 +116,13 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 		}
 
 		mode_timer -= delta;
-	}
+        if (dmg_cooldown > 0)
+        {
+            dmg_cooldown -= delta;
+        }
+
+		//LinearVelocity = new Vector2(LinearVelocity.X, gravity * (float)delta);
+    }
 
 	void jump(double x)
 	{
@@ -121,9 +133,12 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 
     public void damage(float damage)
     {
-        
-        health -= damage;
-        
+        if (dmg_cooldown <= 0)
+        {
+            health -= damage;
+            dmg_cooldown = inv_time;
+        }
+
         if (health <= 0)
         {
             this.kill();
