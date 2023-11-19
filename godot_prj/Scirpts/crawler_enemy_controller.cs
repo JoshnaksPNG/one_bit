@@ -7,7 +7,7 @@ public partial class crawler_enemy_controller : RigidBody2D, killable
     int skitter_direction = 1;
     double skitter_direction_swap = 0.6d;
 
-    public double damage_accessor = 40;
+    public double damage_accessor = 340;
 
     level_handler parentHandler;
 

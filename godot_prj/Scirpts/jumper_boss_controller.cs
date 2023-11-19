@@ -25,9 +25,10 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 
 	MotionMode[] modes = new MotionMode[3] { MotionMode.Still, MotionMode.Skitter, MotionMode.Jump };
 
-	public double damage_accessor = 150;
+	public double damage_accessor = 500;
 
     level_handler parentHandler;
+	CurrencyCounter counter;
 
     public float health = 250f;
 
@@ -38,6 +39,7 @@ public partial class jumper_boss_controller : RigidBody2D, killable
     public override void _Ready()
 	{
 		parentHandler = GetNode<level_handler>("../..");
+		counter = GetNode<CurrencyCounter>("../../../CurrencyCounter");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -174,6 +176,7 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 
     public void kill()
     {
+		counter.addCurrency(500);
         parentHandler.decrementEnemies();
         this.QueueFree();
     }

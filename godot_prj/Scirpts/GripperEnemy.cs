@@ -15,7 +15,7 @@ public partial class GripperEnemy : RigidBody2D, killable
 	const double inv_time = 0.26;
 	public double dmg_cooldown = 0;
 
-	public const double damage_amount = 70;
+	public const double damage_amount = 360;
 	public double damage_accessor = damage_amount;
 
 	level_handler parentHandler;

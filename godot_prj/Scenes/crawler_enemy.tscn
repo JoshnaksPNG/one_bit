@@ -9,7 +9,7 @@
 size = Vector2(280, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ptrf4"]
-size = Vector2(304, 56)
+size = Vector2(304, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sxtsu"]
 animations = [{
@@ -39,7 +39,8 @@ scale = Vector2(0.4, 0.4)
 script = ExtResource("2_tgnuc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
-position = Vector2(0, -4)
+position = Vector2(0, -2.08616e-06)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ptrf4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
