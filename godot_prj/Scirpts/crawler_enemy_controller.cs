@@ -16,6 +16,8 @@ public partial class crawler_enemy_controller : RigidBody2D, killable
     const double inv_time = 0.26;
     public double dmg_cooldown = 0;
 
+    float current_skitter_velocity = 0;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
@@ -38,7 +40,10 @@ public partial class crawler_enemy_controller : RigidBody2D, killable
             //Debug.Print("skatter");
         }
 
-        LinearVelocity = new Vector2(skitter_speed * skitter_direction, LinearVelocity.Y);
+        //ApplyForce(new Vector2(skitter_speed * skitter_direction, 0));
+
+        //LinearVelocity = new Vector2(skitter_speed * skitter_direction, LinearVelocity.Y);
+        //current_skitter_velocity = skitter_speed * skitter_direction;
 
         skitter_direction_swap -= delta;
 
@@ -46,6 +51,12 @@ public partial class crawler_enemy_controller : RigidBody2D, killable
         {
             dmg_cooldown -= delta;
         }
+    }
+
+    public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+    {
+        state.LinearVelocity = new Vector2(skitter_speed * skitter_direction, LinearVelocity.Y);
+        base._IntegrateForces(state);
     }
 
     public void damage(float damage)

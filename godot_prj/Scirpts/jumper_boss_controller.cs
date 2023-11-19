@@ -18,6 +18,8 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 	double skitter_direction_swap = 0.3d;
 
 	const float jump_velocity = -1000f;
+	bool should_jump = true;
+	float jump_val = 0;
 
 	MotionMode mode = MotionMode.Still;
 
@@ -71,7 +73,7 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 		switch (mode) 
 		{
 			case MotionMode.Still:
-				LinearVelocity = new Vector2 (0, LinearVelocity.Y);
+				//LinearVelocity = new Vector2 (0, LinearVelocity.Y);
 
 				break;
 
@@ -82,8 +84,10 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 					if (jump_still_timer <= 0)
 					{
 						Random rand = new Random();
-						jump((rand.Next(1800) - 900));
-						Debug.Print("jamp");
+						//jump((rand.Next(1800) - 900));
+						jump_val = rand.Next(1800) - 900;
+						should_jump = true;
+                        //Debug.Print("jamp");
 					}
 
 
@@ -103,10 +107,10 @@ public partial class jumper_boss_controller : RigidBody2D, killable
 
 					skitter_direction_swap = (rand.NextDouble() * 0.5) + 0.5f;
 					skitter_direction *= -1;
-					Debug.Print("skatter");
+					//Debug.Print("skatter");
 				}
 
-				LinearVelocity = new Vector2 ( skitter_speed * skitter_direction, LinearVelocity.Y);
+				//LinearVelocity = new Vector2 ( skitter_speed * skitter_direction, LinearVelocity.Y);
 
 				skitter_direction_swap -= delta;
 				break;
@@ -119,11 +123,38 @@ public partial class jumper_boss_controller : RigidBody2D, killable
         }
     }
 
-	void jump(double x)
+    public override void _IntegrateForces(PhysicsDirectBodyState2D state)
+    {
+        switch (mode)
+        {
+            case MotionMode.Still:
+                state.LinearVelocity = new Vector2(0, state.LinearVelocity.Y);
+
+                break;
+
+            case MotionMode.Jump:
+
+				if (should_jump)
+				{
+					jump(jump_val, state);
+					should_jump = false;
+				}
+                break;
+
+            case MotionMode.Skitter:
+                state.LinearVelocity = new Vector2(skitter_speed * skitter_direction, state.LinearVelocity.Y);
+                break;
+        }
+
+        base._IntegrateForces(state);
+    }
+
+
+    void jump(double x, PhysicsDirectBodyState2D state)
 	{
 
 		Vector2 jumpDirection = new Vector2((float)x, jump_velocity);
-		LinearVelocity= jumpDirection;
+		state.LinearVelocity= jumpDirection;
 	}
 
     public void damage(float damage)
